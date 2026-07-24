@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Bernardo Kastrup · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Two
+</div>
+<h1 id="bernardo-kastrup">Bernardo Kastrup</h1>
+<p class="kicker-sub">
+There is only one mind; we are the ways it splits apart.
+</p>
+<p class="lead">
+On the last page Donald Hoffman took the world apart and found, behind
+the screen, not dead matter but experience — and he said that experience
+was <em>many:</em> a countless crowd of separate little minds. Bernardo
+Kastrup agrees with the first part completely and refuses the second. He
+is a computer scientist and philosopher who spent years arguing,
+carefully and stubbornly, for one plain idea that sounds impossible when
+you first hear it: there is only <em>one</em> mind in all of reality,
+and you are one of the ways it has split itself apart. This page walks
+you there slowly, starting from something that happens to you every
+single night. Take it gently; the strangeness is earned one small step
+at a time.
+</p>
+<h2 id="start-with-your-own-dreams">Start with your own dreams</h2>
+<p>Tonight you will fall asleep, and your mind will build a world.</p>
+<p>Not remember one — <em>build</em> one. In the dream there is a place,
+with its own ground and sky. There are other people in it, who say
+things you didn’t plan and surprise you. There is a “you” walking around
+inside it, looking out through dream-eyes. And here is the part worth
+stopping on: while you are dreaming, <em>you do not know any of it is
+you.</em> The stranger who frightens you in the dream feels like someone
+else entirely. The room feels like a real room, out there, solid, not
+yours. You are fooled by your own mind, from the inside, every
+night.</p>
+<p>Then you wake up, and the trick is obvious. There was no room and no
+stranger. There was only <em>one</em> mind — yours — and it had quietly
+divided itself into a world, and a self inside the world, and other
+selves who seemed separate and were not. One thing, wearing the mask of
+many.</p>
+<p>Hold that, because it is the whole shape of what Kastrup is going to
+claim about <em>everything.</em> A single mind can, all by itself, throw
+up the appearance of a whole world and many separate people — and can do
+it so well that the people inside don’t know they’re one.</p>
+<h2 id="a-stranger-fact-than-dreams-minds-that-wall-themselves-off">A
+stranger fact than dreams: minds that wall themselves off</h2>
+<p>Dreams end when you wake. But there is something that does not end,
+and it is not a theory — it is in the medical books.</p>
+<p>Some people, usually after great pain early in life, develop what
+doctors call <strong>dissociation:</strong> the mind walls off a part of
+itself so completely that it becomes, for all practical purposes, a
+<em>separate person.</em> One body, one brain — but two or more selves
+living in it, each with its own name, its own memories, its own voice.
+And they do not share. One “alter” (that is the word for one of these
+split-off selves) can be awake while another has no memory of what just
+happened, the way you’d have no memory of someone else’s afternoon.</p>
+<p>It goes deeper than talk. This is the part that stops people. In
+documented cases, one alter has been measurably <em>blind</em> — the
+eyes work, the brain’s seeing-parts work, but <em>that self</em> cannot
+see — while another alter, in the very same body, sees perfectly fine.
+The wall between the selves is real enough to switch sight on and off.
+So this is not pretend and not metaphor: a single mind <em>can</em>
+divide itself into genuinely separate centers of experience, each sealed
+off from the others, each certain it is a whole and separate person.</p>
+<p>Now you have two facts sitting side by side. One mind can build a
+world and populate it with seeming-others (your dreams). And one mind
+can split into truly separate, sealed-off selves that don’t know they’re
+one (dissociation). Kastrup is about to put them together and aim the
+result at the entire universe.</p>
+<h2 id="the-turn-one-mind-and-we-are-its-alters">The turn — one mind,
+and we are its alters</h2>
+<p>Here is the leap, and it is a big one, so take it in slow.</p>
+<p>Kastrup says: start by throwing out the usual picture. The usual
+picture is that reality is fundamentally <em>matter</em> — dead stuff,
+particles, fields — and that somehow, in a few wet lumps of it called
+brains, this dead stuff learned to <em>feel.</em> That last step is the
+hard problem, the one this whole book circles: how could anything made
+of unfeeling matter ever light up into an inside, an experience, a
+<em>someone home?</em> Nobody has ever shown how. It may be the wrong
+question.</p>
+<p>So Kastrup turns the whole thing over. What if there is no dead
+matter to begin with? What if the one and only fundamental thing is
+<em>mind</em> — experience itself — and everything that exists is a
+movement, a pattern, inside it? He gives that one universal mind a name:
+<strong>mind-at-large.</strong> Not a god, not a person with plans. Just
+the single field of raw experiencing that is, on this view, the base of
+reality — the one dreamer, if you like, that everything is happening
+inside of.</p>
+<p>And you — you are an <strong>alter</strong> of it. A dissociated
+pocket of the one mind, walled off the way one of those clinical selves
+is walled off, so completely that you feel like a wholly separate person
+adrift in a foreign world. Every living creature is another such alter.
+We are not separate minds that somehow appeared in a dead cosmos. We are
+the one mind, dissociated into countless sealed-off selves, each certain
+it is alone.</p>
+<h2 id="what-then-is-the-physical-world">What, then, is the physical
+world?</h2>
+<p>But wait — if it’s all mind, why does the world look so solidly
+<em>not</em> like mind? Why is there a hard table, a heavy stone, a
+brain you can slice open and find no thoughts inside, only grey tissue?
+This is the objection everyone raises, and Kastrup’s answer to it is the
+cleverest move he makes.</p>
+<p>Think again about the alters in one body. When one alter looks at
+another — or when a doctor looks at the patient — what do they
+<em>see?</em> They cannot see the other self’s inner life directly. They
+see it <em>from the outside:</em> a face, a voice, behavior, a body,
+brain scans. The rich inner experience is real and full on the inside,
+but from across the dissociative wall it <em>appears</em> as something
+physical — a body, an organ, a pattern on a screen. The inside, seen
+from outside the boundary, looks like matter.</p>
+<p>Now scale that up. Kastrup’s claim is that <strong>the entire
+physical world is what the rest of mind-at-large looks like, seen from
+inside our little dissociation.</strong> Matter is not a different
+substance from mind. Matter is what mind looks like <em>from across a
+boundary</em> — the outside view of an inside you can’t directly enter.
+Your brain is not what <em>produces</em> your experience; your brain is
+what your experience <em>looks like</em> to me, from out here, on the
+far side of the wall between us. And the whole vast physical universe —
+stars, rocks, the cold dead-seeming reaches of it — is the outward
+appearance of the one mind’s own inner life, viewed from within one of
+its pockets.</p>
+<p>He puts the living case sharply. Every living thing is an alter — so
+a living body, seen from outside, should be exactly what a
+<em>dissociation-in-progress</em> looks like. In his own words:
+<em>“metabolizing organisms are simply what universal-level dissociative
+processes look like.”</em> A living creature is not a machine that
+mysteriously grew a soul. It is the visible outside of one of
+mind-at-large’s split-off selves — you are looking at the far side of
+someone’s inner life, and calling it a body.</p>
+<p>And now watch the hard problem: it is <em>gone.</em> There is no
+longer any puzzle about how dead matter makes experience, because there
+was never any dead matter — only experience, and matter was just its
+outside appearance all along. The gap everyone was trying to bridge
+turns out to have nothing on the far side of it. That is Kastrup’s whole
+prize: not a solution to the hard problem, but a claim that the problem
+was an illusion created by starting from the wrong end.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>There is only one mind. You are not a separate spark of
+awareness stranded in a dead universe — you are that one mind, walled
+off from itself into a seeming-separate self, the way a single dreamer
+becomes a whole cast of strangers, the way one clinical patient becomes
+several sealed-off people. And matter is not the opposite of mind:
+matter is simply what a mind looks like from the outside, across the
+wall. Your brain is the outside of your inner life; the whole physical
+world is the outside of the one mind’s inner life, seen from
+within.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If, not As-Proven — and here the honest work is to cut
+one clean line through the middle of the page, because part of it is
+checkable fact and part of it is a vast bet, and it matters enormously
+which is which.</p>
+<p><strong>What is genuinely checkable</strong> is the machinery Kastrup
+borrows: dissociation is real. That a single mind can split into
+separate, sealed-off centers of experience — each with its own memories,
+each blind to the others, in one documented case even switching eyesight
+on and off between selves — is not mysticism. It is in the clinical
+literature; you could go read the case studies. So the raw
+<em>capacity</em> he needs — one mind appearing as many, convincingly,
+from the inside — is established. That is a real and surprising fact
+about minds, and it does real work: it shows the “one mind, many selves”
+idea is at least <em>possible,</em> not incoherent.</p>
+<p><strong>What is the leap</strong> — and it is an enormous one — is
+everything that comes after: that the <em>whole universe</em> is a
+single such mind, dissociating; that all matter is
+mind-viewed-from-outside. Nothing in the clinical facts <em>forces</em>
+this. You can grant every word about dissociation and still say the
+cosmos at large is not a mind at all. Kastrup argues the case hard and
+it hangs together, but it is an interpretation of reality, taken up
+As-If, not a thing shown true from the outside. And there is an honest
+crack even inside the theory, which we flag plainly: saying “it’s all
+one universal mind” does not actually explain <em>why there is
+experience at all</em> — it just moves the mystery. Instead of asking
+how brains make feeling, you now must ask why mind-at-large feels
+anything in the first place. The hard problem may not be dissolved so
+much as <em>relocated</em> to the bottom of everything, where it is
+harder to see. That is a real limit, not a footnote.</p>
+<p>And now the fault line that earns the next page. You just left
+Hoffman, who agreed with Kastrup on the biggest thing of all — that
+consciousness is the ground, and matter is the derived appearance. They
+stand together there, against nearly all of science. But they split on
+one word, and it is the same split that has run through this whole book:
+<strong>how many?</strong> Hoffman said <em>many</em> — a crowd of
+separate conscious agents, plurality all the way down. Kastrup says that
+cannot be the bottom; underneath the crowd there is
+<strong>one</strong>, and the separateness is dissociation, a wall the
+single mind throws up inside itself. Sea, not crowd.</p>
+<p>The thinker you meet next, <strong>Philip Goff,</strong> disagrees
+with <em>both</em> of them on something even more basic. Kastrup says
+only <em>mind</em> is real, and matter is nothing but appearance — a
+mask, an outside view, with no substance of its own behind the looking.
+Goff will not go that far. Goff is a <strong>panpsychist:</strong> he
+says matter is perfectly real, real stuff really out there — but that
+this real matter <em>has experience built into it,</em> all the way
+down, so that even the smallest bits of the physical world carry a
+flicker of feeling. For Kastrup, matter is a <em>derived appearance of
+mind;</em> for Goff, matter is a <em>fundamental thing that possesses
+mind.</em> One says the physical world is a picture with nothing
+physical behind it; the other says the physical world is solidly there
+and conscious to its core. That is a sharp, real quarrel between two
+people who both refuse to call the universe dead — and it is why each
+gets a page of their own. Turn it, and meet the one who keeps the matter
+and puts the mind <em>inside</em> it.</p>
+<blockquote>
+<p><em>“As such, we may all be alters—dissociated personalities—of
+universal consciousness.”</em> — Bernardo Kastrup, Adam Crabtree &amp;
+Edward F. Kelly, “Could Multiple Personality Disorder Explain Life, the
+Universe and Everything?” <em>Scientific American</em> (Observations),
+June 18, 2018. [verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t11.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t13.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

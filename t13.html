@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Philip Goff · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Three
+</div>
+<h1 id="philip-goff">Philip Goff</h1>
+<p class="kicker-sub">
+Matter feels, all the way down.
+</p>
+<p class="lead">
+The last two thinkers pulled the solid world out from under you — first
+showing your senses are a headset, then that mind might come before
+matter. Philip Goff is a living philosopher who comes at the same
+mystery from the opposite end: he takes the hard, ordinary, scientific
+world completely seriously — atoms, electrons, the equations of physics
+— and asks one quiet question about them that almost no one thinks to
+ask. The answer, followed honestly, leads somewhere that sounds absurd
+at first and then very hard to shake. This page walks it one small step
+at a time, starting from something a child could describe. Go slowly;
+the strangeness is earned, not assumed.
+</p>
+<h2 id="start-with-the-simplest-question-about-anything">Start with the
+simplest question about anything</h2>
+<p>Pick up any object near you — a cup, a coin, a phone. Now try to say
+what it <em>is.</em></p>
+<p>Watch what actually comes out of your mouth. “It’s heavy.” “It’s
+cold.” “It’s hard.” “It falls when I drop it.” “It rolls.” Every single
+thing you can say is really a description of what the object
+<em>does</em> — how it behaves, how it pushes on your hand, how it moves
+when you push back. Heavy means <em>it pulls down.</em> Hard means
+<em>it resists when you press.</em> Cold means <em>it draws heat out of
+my skin.</em></p>
+<p>Notice what you never once said: what the thing <em>is,</em> in
+itself, when nothing is pushing on it and no one is looking. You
+described a whole list of its <em>doings</em> — and somehow never
+touched the <em>being</em> underneath them.</p>
+<p>Hold onto that gap. It is small, it is easy to miss, and it is the
+crack the whole page opens through.</p>
+<h2 id="physics-widens-the-crack-it-does-not-close-it">Physics widens
+the crack, it does not close it</h2>
+<p>You might think: fine, that’s everyday talk — but <em>science</em>
+tells us what things really are. Science looks <em>inside.</em></p>
+<p>Look at what it actually finds. Ask a physicist what an electron is,
+and you get its <strong>mass</strong>, its <strong>charge</strong>, its
+<strong>spin.</strong> But press on any one of those words and it
+dissolves into more doing. Mass? That’s how strongly the thing pulls on
+other things and resists being pushed. Charge? That’s how strongly it
+shoves or tugs other charged things. Spin? Again — how it behaves in a
+magnetic field. Every term physics offers turns out to be one more
+description of <em>what the electron does to other things.</em> Goff
+puts it in five plain words: <strong>“Physics tells us what matter
+<em>does,</em> but not what it <em>is.</em>”</strong></p>
+<p>This is not a flaw in physics. It is what physics is <em>for.</em>
+Physics is a fantastically precise map of behaviour — it lets us
+predict, build, launch rockets, split atoms. But a map of what
+everything <em>does</em> is still, from top to bottom, silent about what
+the stuff <em>is</em> that’s doing it. Imagine a book that describes a
+game only by its rules — what each piece may do, where it may move — and
+never tells you what the pieces are carved from. You could play forever
+and never learn whether they’re wood or ivory or light. Physics is that
+rulebook. It is complete <em>as a rulebook,</em> and it never once
+mentions the material.</p>
+<p>So the crack from the cup is not closed by going deeper. It goes
+<strong>all the way down.</strong> Right at the bottom of the physical
+world there sits a question physics is not even built to ask: these
+particles have a nature — they <em>are</em> something — so what are
+they?</p>
+<h2 id="the-turn-the-one-thing-you-already-know-from-the-inside">The
+turn: the one thing you already know from the inside</h2>
+<p>Here is Goff’s move, and it is quieter than it sounds.</p>
+<p>There is exactly <strong>one</strong> piece of the universe whose
+inside you know directly — not by watching what it does, but by
+<em>being</em> it. Your own experience. You don’t have to measure your
+toothache to know it hurts; you don’t infer the redness of a sunset from
+its behaviour; you <em>live</em> it, from within. Every other thing in
+the world you know only from the outside, by its doings. This one thing
+— consciousness — you know from the inside, as what it <em>is.</em></p>
+<p>So Goff asks the simplest possible question. We have a world full of
+matter whose <em>doing</em> we understand perfectly and whose
+<em>being</em> is a total blank. And we have one and only one clue to
+what “being, from the inside” is even like — the fact of experience.
+What if the blank and the clue are the <strong>same thing?</strong> What
+if experience is not something special that switches on inside a few
+soft grey brains, but is simply <strong>what matter is,</strong>
+underneath everything it does?</p>
+<p>That is <strong>panpsychism.</strong> In Goff’s words: <strong>“mass,
+spin, charge, etc, are, in their intrinsic nature, forms of
+consciousness.”</strong> Not that an electron thinks, or worries, or has
+a tiny face. But that at the bottom of physical reality there is some
+unimaginably simple flicker of <em>experience</em> — that a fundamental
+particle is, as he puts it, one of the <strong>“fundamental physical
+entities — perhaps electrons and quarks — possessing extremely
+rudimentary forms of consciousness.”</strong> The felt inside is not
+built up out of dead parts at the top. It was there, in the simplest
+form, at the very bottom. All the way down.</p>
+<h2 id="why-physics-was-never-going-to-find-this-on-its-own">Why physics
+was never going to find this on its own</h2>
+<p>If that sounds like it should have shown up in a physics experiment
+by now — here is the piece Goff adds, and it is the reason his book is
+called <em>Galileo’s Error.</em></p>
+<p>Go back four hundred years, to the birth of modern science. Galileo
+wanted to describe the world in the clean, exact language of
+mathematics. But experience — the redness of red, the sound of a sound,
+the sting of pain — cannot be written as a number. It doesn’t fit the
+equations. So Galileo made a deliberate decision, a brilliant and
+fateful one: he <strong>set experience outside of science.</strong> He
+drew a line, put all the qualities-you-feel on the far side of it, and
+kept for physics only what could be measured and counted. That single
+choice is what let physics become the powerful, precise thing it is.</p>
+<p>But look at what follows. If, at the very start, you <em>defined</em>
+your science so that consciousness is the one thing it doesn’t handle —
+then of course, centuries later, your science can’t explain
+consciousness. It was <strong>built</strong> not to. Asking physics to
+find experience is like sorting your mail into “letters” and
+“not-letters,” throwing out the second pile, and then being amazed you
+can’t find any packages. Goff’s point is not that physics is wrong. It
+is that physics has a <strong>hole in it by design,</strong> exactly
+where consciousness would go — and panpsychism is the proposal to fill
+that hole with the one thing we already know from the inside.</p>
+<p>There is a last step Goff takes, to fix a real problem. If every
+particle has its own separate speck of experience, how do billions of
+them ever add up to the single, unified you looking at this page? Little
+bits of experience don’t obviously glue into a big one. So Goff leans
+toward the reverse: maybe the fundamental conscious thing is not the
+tiny particle but the <strong>whole universe</strong> — one vast field
+of experience — and you, and I, and every electron are <em>regions</em>
+of that single consciousness, the way one ocean has many currents. This
+is <strong>cosmopsychism:</strong> not countless little minds adding up,
+but one cosmic consciousness, breaking into the many. (Remember that
+word <em>one</em> — it will matter again soon.)</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>Physics only ever tells you what matter <em>does</em> — never
+what it <em>is.</em> There is one thing in all the universe whose inside
+you know directly, by being it: experience. So the simplest answer to
+what matter <em>is,</em> underneath all its doing, is the thing you
+already are — consciousness, present in some faint form all the way down
+to the electron, and physics missed it only because it was built, from
+the start, to leave it out.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If, not As-Proven — and the honest work here is to see
+that Goff’s argument has a strong, sober half and a daring half, and to
+keep them apart.</p>
+<p><strong>The strong half</strong> is the gap itself: that physics
+describes only the <em>behaviour</em> of matter and is genuinely,
+structurally silent about its <em>intrinsic nature</em> — what the stuff
+is in itself. This isn’t mysticism or word-play; it’s a point serious
+philosophers of science have granted for a century, and you can feel its
+force yourself with the cup in your hand. Physics gives us the rulebook
+and never the material. That much stands up.</p>
+<p><strong>The leap</strong> is what fills the gap. That the intrinsic
+nature <em>is</em> consciousness is not something the argument proves —
+it’s the <em>simplest</em> candidate Goff can find, because it’s the
+only intrinsic nature we have any direct acquaintance with. But
+“simplest and only clue we have” is a reason to take it seriously, not a
+proof that it’s so. The blank could be filled by some nature we’ve never
+conceived, neither mind nor mere matter. Goff argues panpsychism is the
+most elegant, least wasteful option on the table — and elegance is a
+real reason, but it is not evidence. Held As-If, it’s a live and
+disciplined bet; sold As-Proven, it would be exactly the kind of
+beautiful pattern that flatters us into skipping the check.</p>
+<p>And now the disagreement that earns the next page. The thinker who
+follows, <strong>Giulio Tononi</strong>, is a neuroscientist with a
+precise theory of consciousness — and he and Goff clash on one enormous
+question: <strong>how widespread is experience?</strong> Goff says it is
+<em>everywhere</em> — intrinsic to matter itself, so a lone electron
+carries its faint flicker. Tononi says no: consciousness exists only
+where information is deeply <em>integrated</em> — woven together into a
+unified whole — and he even has a measure for it, a quantity he calls
+<strong>Φ</strong> (“phi”). Where Φ is high, like in a living brain,
+there is rich experience. Where it’s low or zero — a lone electron, a
+bucket of sand, even a digital computer built the wrong way — there is
+little or none. So Goff’s universe is <em>saturated</em> with mind down
+to the last particle; Tononi’s has mind only where the wiring
+integrates, and vast stretches of matter feel nothing at all. Both take
+consciousness with total seriousness. They simply disagree,
+fundamentally, on <em>how far it reaches.</em> Turn the page and meet
+the one who says: not everywhere — only where it all comes together.</p>
+<blockquote>
+<p><em>“Physics tells us what matter does, but not what it is. … The
+proposal of the panpsychist is that mass, spin, charge, etc, are, in
+their intrinsic nature, forms of consciousness.”</em> — Philip Goff,
+“The Case for Panpsychism,” <em>Philosophy Now</em> 121 (2017).
+[verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t12.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t14.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

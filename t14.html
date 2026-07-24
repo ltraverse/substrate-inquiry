@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Giulio Tononi · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Four
+</div>
+<h1 id="giulio-tononi">Giulio Tononi</h1>
+<p class="kicker-sub">
+Consciousness is how much of you can’t be split apart.
+</p>
+<p class="lead">
+Every thinker so far has circled the mystery with words — the witness
+that can’t catch itself, the felt inside no machine explains. Giulio
+Tononi is a psychiatrist and neuroscientist who tried to do something
+almost nobody had dared: turn consciousness into <em>a number.</em> Not
+to explain it away, but to measure it — to say of any object in the
+world, this much conscious, that much, none at all. His theory is called
+<strong>Integrated Information Theory</strong>, and it is the hardest
+page in this book, because at its heart is a piece of mathematics. So we
+will go slowly, from a thing in your pocket to a claim about what
+experience actually <em>is</em>. Every step is small. Take them one at a
+time.
+</p>
+<h2 id="start-with-the-camera-in-your-phone">Start with the camera in
+your phone</h2>
+<p>Your phone camera has, say, twelve million tiny light sensors, packed
+in a grid behind the lens. Point it at a sunset. Each sensor does
+exactly one job: it measures the light landing on its own little spot
+and reports a number — this bright, this red. Twelve million sensors,
+twelve million separate little reports.</p>
+<p>Here is the thing to notice, and it is the whole beginning:
+<strong>no sensor knows about any other.</strong> The one reading the
+orange sky has no idea there’s a dark hill three sensors over. Each sits
+in its own box, reporting its own dot, blind to the rest. The camera
+never pulls them together into a scene. It just stores twelve million
+unconnected facts side by side. If you sliced the sensor grid down the
+middle with scissors, the left half would keep working <em>exactly</em>
+as before, and so would the right. Nothing was lost by the cut, because
+there was nothing joining the two halves in the first place.</p>
+<p>Now <em>you</em> look at the same sunset.</p>
+<p>You do not experience twelve million separate dots. You experience
+<strong>one scene</strong> — the orange and the hill and the fading
+light, all at once, fused into a single whole you could never pull apart
+into unconnected pieces. Try it: can you experience the left half of
+what you’re seeing right now <em>completely on its own</em>, with the
+right half truly gone, not just ignored? You can’t. It arrives welded
+together. Your experience is one thing. The camera’s twelve million
+readings are twelve million things.</p>
+<p>That gap — between a heap of separate parts and a single unbreakable
+whole — is the seed of everything Tononi built. Hold on to it.</p>
+<h2 id="he-started-from-the-experience-not-the-brain">He started from
+the experience, not the brain</h2>
+<p>Almost every scientist studying consciousness starts with the brain —
+the wet machine — and asks how it <em>produces</em> experience. Tononi
+did something backwards, and this reversal is the move that is <em>his
+alone.</em></p>
+<p>He started with the experience itself, sitting right there, more
+certain than anything, and asked: <strong>what is always true of
+it?</strong> Not for one person, not for one moment — for <em>any</em>
+experience whatsoever. He came up with a short list of plain facts, so
+obvious they’re easy to miss. Walk them slowly; each is just a true
+thing about the sunset you’re looking at.</p>
+<ul>
+<li><strong>It exists, and it exists for you.</strong> The experience is
+happening, and it’s happening from the inside, for the one having it.
+Nobody has to certify it from outside.</li>
+<li><strong>It’s made of parts, structured.</strong> There’s a shape and
+a color and a place; the scene has pieces you can pick out within
+it.</li>
+<li><strong>It’s specific — it’s <em>this</em> and no other.</strong>
+Seeing the sunset is not seeing a blank wall, not seeing your kitchen,
+not seeing the countless billions of other scenes you <em>could</em> be
+seeing. Each experience is sharply one particular thing, which means it
+rules out a staggering number of others.</li>
+<li><strong>It’s unified — it can’t be split.</strong> This is the
+camera lesson. The scene comes whole; you can’t have half of it be
+<em>your</em> experience and the other half belong to no one.</li>
+<li><strong>It’s definite — it has edges.</strong> It holds this much
+and no more, at one grain: not the blur of atoms, not the whole room
+next door. It stops somewhere, cleanly.</li>
+</ul>
+<p>That’s the list. In the theory they’re called the
+<strong>axioms</strong> — a fancy word for “things we take as plainly
+true because you can check them in your own experience right now.”
+Nothing about neurons yet. Just an honest description of what it’s like
+to be aware at all.</p>
+<p>Then comes the hinge of the whole theory. Tononi says: if
+<em>that’s</em> what experience is always like, then whatever physical
+thing carries an experience must be <strong>built the same way.</strong>
+The properties of the feeling become a blueprint for the machine. And
+the one on that list that does the heavy lifting — the one that
+separates you from the camera — is <em>unified. Can’t be split.</em></p>
+<h2 id="the-turn-a-number-for-cant-be-split">The turn — a number for
+“can’t be split”</h2>
+<p>Here is the mathematics, and we’ll build it from the scissors.</p>
+<p>Take any system — a brain, a camera, a country, a pile of sand. Ask a
+single question: <strong>how much does the whole depend on itself being
+whole?</strong> To find out, you do the cruelest possible cut. You look
+for the weakest seam in the system — the place where slicing it into two
+pieces does the <em>least</em> damage — and you cut there. Then you
+measure how much was lost. Not lost in weight or wires: lost in
+<em>cause and effect.</em> How much of the system’s power to shape its
+own next moment vanishes when the two halves can no longer talk to each
+other?</p>
+<ul>
+<li>If cutting at the weakest seam loses <strong>nothing</strong> — the
+parts were just sitting side by side, never truly influencing one
+another (the camera, the sand) — then the system was never really
+<em>one</em> thing at all. It was a heap.</li>
+<li>If cutting <em>anywhere</em> tears out something real — if every
+part is so woven into the rest that no clean seam exists, and any cut
+bleeds — then the system is deeply, irreducibly
+<strong>one.</strong></li>
+</ul>
+<p>That amount — how much is lost at the kindest possible cut, the
+damage you <em>cannot</em> avoid no matter where you slice — is a
+number. Tononi calls it <strong>Φ</strong>, the Greek letter
+<em>phi</em> (say “fye”). Φ measures exactly one thing: <strong>how much
+of a system cannot be split apart without losing what it is.</strong> A
+heap has Φ near zero. A whole woven through and through has high Φ.</p>
+<p>And now the claim that puts Tononi in this book, the one that will
+unsettle you: <strong>consciousness does not come <em>from</em> the
+high-Φ structure. Consciousness <em>is</em> it.</strong> The integrated
+whole — that irreducible, can’t-be-cut web of cause and effect — is not
+a thing that <em>makes</em> experience appear alongside it, the way a
+fire makes smoke. It is the experience, seen from the outside. From the
+inside, being that unbreakable whole <em>is what it feels like</em> to
+be you. Experience and integrated information are, he says, <strong>the
+same thing described two ways</strong> — one from within, one from
+without.</p>
+<p>So the camera, for all its twelve million sensors, is blind and
+empty: Φ near zero, because you can cut it anywhere and lose nothing.
+And a much smaller tangle of parts that are all genuinely woven into
+each other could have more experience than the giant camera — because
+what counts was never the <em>number</em> of parts. It was how
+unbreakably they are one.</p>
+<h2 id="the-strange-things-this-predicts">The strange things this
+predicts</h2>
+<p>A real theory sticks its neck out. If consciousness is Φ — is <em>how
+unified the causing is</em> — then some very odd things must follow,
+whether we like them or not. Tononi accepts them.</p>
+<ul>
+<li><strong>The cerebellum barely matters.</strong> At the back of your
+skull sits the cerebellum, and it holds about <em>four out of every
+five</em> of your brain’s neurons — far more than the part you think
+with. Yet people born without one, or who lose it, are still fully
+conscious: they may move clumsily, but the lights are on. Why? Because
+its neurons are wired in tidy, independent little chains that don’t loop
+back and weave into each other — many parts, almost no integration.
+<strong>Low Φ.</strong> The theory <em>predicted the shape of this</em>
+from the wiring alone. Count of neurons is not the thing. Weaving is the
+thing.</li>
+<li><strong>A blank grid could be conscious.</strong> Run the logic
+forward and it bites: a large, simple lattice of switches, wired in the
+right crosslinked pattern — an object doing nothing a person would call
+thinking, just sitting there — could have high Φ, and therefore, on this
+theory, genuine experience. Tononi does not flinch from this. If the
+integration is there, the consciousness is there, brain or no brain.
+(Critics hand him exactly this case as a reason to reject the theory; he
+answers, in effect, <em>then that grid is conscious, and our intuition
+is the thing that’s wrong.</em>)</li>
+<li><strong>What matters is the wiring, not the behavior.</strong> You
+could build two machines that act <em>identically</em> — same answers,
+same words, indistinguishable from the outside — where one is drenched
+in experience and the other is utterly dark, because inside, one is
+woven into a high-Φ whole and the other is a heap of parts faking it.
+Behavior can be copied. Being-one cannot.</li>
+<li><strong>Only the maximum counts, and it excludes the rest.</strong>
+Consciousness lives at the exact grain and border where Φ hits its peak
+— not in the smaller pieces inside it, not in the larger group it
+belongs to. The winning whole <strong>excludes</strong> its own parts
+from having their own separate experience. There is one “you,” at one
+scale, and the neurons composing you don’t each get a little inner life
+of their own. The maximum takes all.</li>
+</ul>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>Line up all the parts of a thing and cut it at its kindest
+seam — the place the cut hurts least. Whatever is still lost by that cut
+is the measure of how much the thing is truly <em>one</em> and not a
+heap. Tononi’s wager is that this exact quantity — call it Φ, how
+unbreakably woven a system is — is not a clue to consciousness or a
+cause of it. It <em>is</em> consciousness, viewed from outside. To be
+conscious is to be a whole that cannot be divided without dying a
+little.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If, not As-Proven — and here the split runs right down
+the middle of the theory, so name both halves.</p>
+<p><strong>What is a genuine, working science</strong> is the part that
+measures. The plan of attacking consciousness by <em>how integrated</em>
+a system is has already left the armchair and entered hospitals. Doctors
+now use a method built on this idea — the <em>perturbational complexity
+index</em> — to tell whether an unresponsive patient, or someone under
+anesthesia, is still conscious inside: they knock the brain with a
+magnetic pulse and measure how richly and inseparably the whole thing
+echoes back. A rich, unified echo means someone’s home; a simple,
+fragmented one means the lights are out. That works, it’s been tested
+against people who later reported their experiences, and it’s a real
+contribution regardless of what you think about the philosophy. IIT
+makes checkable predictions, and <em>that</em> is more than most
+theories of consciousness manage.</p>
+<p><strong>What is the leap</strong> is the identity — the tiny,
+enormous word <em>is.</em> That a system is highly integrated, you can
+measure. That its integration <em>is literally the same thing</em> as
+the redness of red or the ache of grief — that felt experience and this
+number are two views of one object — is not measured and, many argue,
+cannot be. You can grant every equation and still ask, “but <em>why</em>
+would being woven-together <em>feel like anything?</em>” — the same hard
+question David Chalmers asked pages ago, unanswered, only now dressed in
+mathematics. And the theory carries two uncomfortable companions: it
+implies that almost anything with the right wiring has at least a
+flicker of experience (a whisper of <em>panpsychism</em>, the idea that
+mind is spread thin through all matter), and it hands out consciousness
+by internal structure rather than anything we can watch a thing
+<em>do</em>. In 2023 a large group of scientists went public calling IIT
+untestable — “pseudoscience,” they said — precisely because the core
+identity claim seems built so that no experiment could ever prove it
+wrong. Whether that charge is fair is itself hotly argued. Take the
+measuring seriously; treat the <em>is</em> as a bold, live, unproven
+bet.</p>
+<p>And now the fault line that earns the next page. Tononi’s theory,
+whatever else it is, is a theory of <strong>organization</strong> — of
+how the parts of a physical system are wired together. It doesn’t
+matter, in principle, what the parts are <em>made of;</em> get the
+pattern of integrated cause-and-effect right and consciousness is there,
+and a computer could at least <em>estimate</em> the Φ of any system
+whose wiring it knows. Consciousness, for Tononi, is in reach of
+calculation. The thinker you meet next, <strong>Roger Penrose</strong>,
+plants his flag on the opposite claim, and he is one of the great
+mathematicians alive. He says consciousness is
+<strong>non-computable</strong> — that no amount of wiring, no
+calculation, no ordinary physics of any organization <em>could ever</em>
+add up to understanding, because human insight does something Penrose
+believes he can prove machines mathematically cannot. For him the answer
+isn’t in how the parts are arranged at all; it’s hidden in a deeper,
+stranger physics — the quantum collapse of the very small — that no
+computer simulates. So the two of them frame the sharpest disagreement
+in the modern science of mind: is consciousness a matter of <em>how
+you’re organized</em> — countable, in principle buildable — or something
+<em>no computation can touch?</em> Tononi says count it. Penrose says it
+can’t be counted. Turn the page.</p>
+<blockquote>
+<p><em>“An experience is identical with the maximally irreducible
+conceptual structure (MICS, integrated information structure, or quale
+‘sensu lato’) specified by the mechanisms of a complex in a state.”</em>
+— Masafumi Oizumi, Larissa Albantakis &amp; Giulio Tononi, “From the
+Phenomenology to the Mechanisms of Consciousness: Integrated Information
+Theory 3.0,” <em>PLoS Computational Biology</em> 10(5): e1003588 (2014).
+[verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t13.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t15.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

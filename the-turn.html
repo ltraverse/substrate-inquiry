@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>The Turn · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Turn
+</div>
+<h1 id="àlex-gómez-marín">Àlex Gómez-Marín</h1>
+<p class="kicker-sub">
+Put the observer back into the method.
+</p>
+<p class="lead">
+You have just met twenty thinkers, and every one of them was answering
+the same question: <em>what is consciousness?</em> This page does
+something different, and that is why it stands alone, between the last
+of them and the view this book will finally offer. Àlex Gómez-Marín is a
+working scientist — a theoretical physicist who became a neuroscientist
+and now runs a laboratory that studies how living things behave. He does
+not hand you a twenty-first answer. He asks a harder, quieter question,
+the one hiding underneath all twenty: <em>how are we even allowed to
+study this — and what did science quietly throw away to be allowed?</em>
+Take this page slowly. It is the hinge the whole book turns on.
+</p>
+<h2 id="start-with-something-in-your-own-mouth">Start with something in
+your own mouth</h2>
+<p>Bite into a slice of lemon.</p>
+<p>There is the sourness — sharp, bright, unmistakable. Now here is the
+strange thing. That sourness is the single most <em>certain</em> thing
+in your whole world right now. You cannot doubt it; it is simply,
+undeniably <em>there.</em> And yet it is the one thing no instrument in
+the world can reach. A scientist could wire your tongue, scan your
+brain, film your face puckering — and gather a perfect record of the
+<em>machinery</em> of tasting. But the sourness itself, the way it is
+<em>for you</em>, would be nowhere in all that data. You have it
+completely. Their instruments have none of it.</p>
+<p>Hold both halves of that at once, because the whole page lives here:
+the sourness is the most certain thing you know, <strong>and</strong> it
+is invisible to the outside look. The thing you are surest of is the
+thing science, as normally practised, cannot see.</p>
+<p>Gómez-Marín’s life’s work begins by refusing to shrug this off. Most
+scientists treat that sourness — your raw, first-person experience — as
+a fog to be cleared away, a private curtain in front of the “real” data.
+He says the exact opposite. That sourness is not the curtain. <strong>It
+is the ground everything else is standing on.</strong></p>
+<h2 id="the-bargain-science-made-and-forgot-it-made">The bargain science
+made — and forgot it made</h2>
+<p>To see why, go back to how science won.</p>
+<p>Science became powerful by making one brilliant deal with itself:
+<em>only count what two people can check.</em> If you say the water is
+boiling, I can put a thermometer in and read the same number you read.
+If you say the star is that bright, we can both point the same
+instrument at it and agree. Your private feelings, your hunches, your
+inner life — those were set aside, because <em>I</em> cannot check
+<em>your</em> insides. Only the public, the measurable, the third-person
+“view from nowhere” was allowed to count as evidence. Call it what
+Gómez-Marín calls it: <strong>the cult of objectivity.</strong></p>
+<p>And it worked. It gave us the entire triumph of physics and chemistry
+and biology — stars, atoms, genes, the whole shining machine. When you
+are studying stones and stars, throwing out the inner life costs you
+nothing, because stones have no inner life to throw out.</p>
+<p>But watch what happens when that same science, flushed with three
+centuries of victory, finally turns around and points itself at
+<strong>you</strong> — at the taster, the one having the experience. It
+arrives carrying its old rule in its hand: <em>your inner experience
+doesn’t count as evidence.</em> And so, at the very moment it tries to
+study consciousness, it has <em>already thrown consciousness out of the
+room.</em> It excludes the one thing it was supposed to explain — before
+it even begins.</p>
+<p>This is the sentence to slow down on: <strong>experience is the thing
+that makes science possible in the first place</strong> — there is no
+observation, no data, no reading of any dial, without someone
+<em>experiencing</em> it — and yet science has built a method with no
+room for experience inside it. It kept the fruit and cut down the tree.
+Gómez-Marín’s word for the whole situation is plain: consciousness
+science has been <em>broken</em> by the cult of objectivity.</p>
+<h2 id="the-trick-hidden-in-the-question">The trick hidden in the
+question</h2>
+<p>Here is how the break hides itself, so well that most scientists
+never notice they are inside it.</p>
+<p>Listen to the question the field asks, the official one, printed in
+the textbooks: <em>“How does the brain produce consciousness?”</em> It
+sounds neutral. It sounds like a good, hard scientific problem. But feel
+what has been slipped inside it. It has already decided that the brain
+<em>does</em> produce consciousness — that matter comes first and
+experience is something matter manufactures. The word “how” smuggles in
+the whole answer and disguises it as a question.</p>
+<p>Gómez-Marín compares it to a courtroom. Imagine being asked, “How did
+you kill him?” There is no innocent way to answer. Say anything at all
+about the <em>how</em> and you have already confessed to the
+<em>whether.</em> The only free move is to step back and say: <em>wait —
+you haven’t shown that I did.</em> The honest question was never “how
+does the brain produce consciousness.” It was “<strong>does</strong> it
+— and how would we know?” A science that forgets to ask <em>whether</em>
+has stopped being science about that thing and started being a belief
+defending itself.</p>
+<p>And here is his most cutting historical claim, the one that names
+this whole part of the book. Thirty years ago, when the “hard problem of
+consciousness” was given its famous name, everyone treated it as a tough
+puzzle science would eventually crack. Gómez-Marín reads it the other
+way. Calling it a <em>hard problem</em> — a thing still to be solved —
+was a way of <em>not saying</em> the thing the evidence was actually
+showing: that the old picture, matter-first, experience-as-afterthought,
+had quietly died. Naming it “hard” instead of “finished” gave the dying
+picture, in his words, a loan for another hundred years. The label
+bought time for a paradigm that had already run out.</p>
+<h2 id="the-turn">The turn</h2>
+<p>So what do you <em>do</em> about it? This is the move that makes
+Gómez-Marín the hinge of this book, and it is beautifully simple to
+state.</p>
+<p>You just met Chris Fields, who proved something exact and humbling:
+standing <em>outside</em> a thing, reading only its surface, you can
+never get behind the wall to whether there is anyone home. From the
+outside, the felt inside is sealed. Fields is right. But look at what he
+assumed without saying it — what <em>everyone</em> in the cult of
+objectivity assumes: that the outside is the <em>only</em> place a
+scientist is allowed to stand.</p>
+<p>Gómez-Marín points at the one exception in the entire universe. There
+is exactly one wall you are not stuck outside of. <strong>Your
+own.</strong> You do not have to infer <em>your</em> sourness from the
+outside; you are the inside. The first person is not a weakness to be
+scrubbed out of science — it is the single place where the sealed box is
+open, because you <em>are</em> the box, looking out.</p>
+<p>So his proposal is not a new theory of consciousness. It is a repair
+to the <em>method</em>: put the observer back in. Build a science that
+is allowed to take first-person experience as real data — carefully,
+rigorously, but as evidence, not fog. He calls it <strong>first-person
+science</strong>, and he argues for it not from a meditation cushion but
+from inside peer-reviewed neuroscience, in its own journals, in its own
+language. This is not “stop doing science.” It is “stop doing a science
+that forbids its own foundation.”</p>
+<p>Notice what he refuses to do next. He will not plant a flag and name
+his own grand answer — he half-jokingly calls his position the
+<em>un-theory</em> of consciousness. And that refusal is exactly why he
+stands here and not back among the twenty. He is not offering a
+twenty-first lens to argue with the other twenty. He is telling you why
+the whole gallery of lenses has been so unable to settle anything: they
+were all built by a method that had thrown away the evidence that could
+settle it.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>Science became powerful by trusting only what two people can
+check from the outside — and it was right to, for stones and stars. But
+experience is what makes every observation possible in the first place,
+and there is exactly one place in the universe where you are not stuck
+outside the wall: your own. A science that studies consciousness while
+forbidding first-person experience as evidence has excluded the one
+thing it was trying to explain. Put the observer back into the
+method.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>This book holds everything As-If, and this page needs that discipline
+most of all — because it is the easiest one to over-trust and the
+easiest one to wave away, and both are mistakes.</p>
+<p><strong>What is solid</strong> is the methodology critique, and it is
+very solid. It survives the hardest test we put to any idea in this
+book: it would hold <em>even for someone who wanted it to be false.</em>
+You do not have to believe consciousness is fundamental to admit that a
+method built to ignore inner experience is a strange tool for studying
+inner experience. The point is argued in peer-reviewed neuroscience, not
+smuggled in from the fringe. That much is load-bearing, and it is why
+Gómez-Marín earns his place: he is the inquiry’s cleanest witness from
+<em>inside</em> the credentialed field for the one move the whole book
+rests on — that the observer belongs in the account, not outside it.</p>
+<p><strong>What is not settled</strong> — and honesty demands we say it
+plainly — is the further, bolder work he also does: experiments on
+perception without the eyes, on knowing-at-a-distance, even on knowing
+<em>before.</em> These are real experiments he genuinely runs, not idle
+talk, and that courage is part of why he matters. But by his own
+admission they are unfinished, contested, and thin on confirmed results.
+<strong>This page does not rest on any of them.</strong> It rests only
+on the method critique — the part that stands whether or not a single
+one of those experiments ever pans out. Keep those two things apart,
+exactly as he asks us to keep the observer and the observed apart: take
+the repair to the method as strong, and hold the frontier experiments as
+open questions, no more.</p>
+<p>There is a test he offers that belongs in this book like a key in a
+lock. When a fellow scientist told him a claim was simply impossible, he
+did not argue the claim. He asked one question: <em>what is your prior —
+before any evidence — that this could be true? If it is exactly zero,
+then no evidence could ever move you, and we are not doing science
+anymore; we are defending a faith.</em> That is the same discipline that
+runs underneath this entire inquiry — and it cuts <strong>both</strong>
+ways, which is the only honest way to hold a blade. A prior of zero
+against a claim is a closed mind wearing a lab coat. But a prior of
+<em>one</em> — certainty <em>for</em> a claim you want to be true — is
+the same closed mind, facing the other direction. Gómez-Marín keeps both
+open at once, and asks us to.</p>
+<p>And now the doorway. Fields showed you a wall you can never get
+behind from outside. Gómez-Marín turns and says: then stop pretending
+outside is the only place to stand — you are one wall’s inside, and that
+is not a flaw in your evidence, it is your evidence. What would it look
+like to take that seriously — to build a picture of the world from the
+one window that opens <em>inward?</em> Turn the page. That picture is
+<strong>The Glass.</strong></p>
+<blockquote>
+<p><em>“Experience is what makes science possible and yet a proper
+science of consciousness seems unattainable.”</em> — Àlex Gómez-Marín,
+“The cult of objectivity has broken consciousness science,” <em>IAI
+News</em> (2024). [verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t20.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="the-glass.html">The Glass →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

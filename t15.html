@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Penrose &amp; Hameroff · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Five
+</div>
+<h1 id="roger-penrose-stuart-hameroff">Roger Penrose &amp; Stuart
+Hameroff</h1>
+<p class="kicker-sub">
+Understanding is something no computation can do.
+</p>
+<p class="lead">
+The last few pages have circled one suspicion: that mind is not just
+clever machinery. This page makes that suspicion into an actual argument
+— a careful, technical one, built by a mathematician who won a share of
+the Nobel Prize in physics, and then given a home inside the brain by a
+doctor who puts people to sleep for a living. Roger Penrose starts from
+a famous piece of mathematics and claims it proves that a human mind can
+do something no computer ever could. Stuart Hameroff takes that claim
+and asks: then <em>where</em>, in the wet tissue of a real brain, could
+such a thing be happening? Their answer reaches all the way down to a
+structure smaller than a cell and out to the deepest laws of physics. It
+is the hardest material in this book — so we will go slowest of all
+here, one small step at a time. A stranger should be able to follow
+every step.
+</p>
+<h2 id="start-with-the-thing-on-your-desk">Start with the thing on your
+desk</h2>
+<p>Think about a pocket calculator, or the computer you are reading this
+on.</p>
+<p>Everything it does, it does by <em>following rules.</em> Type
+<code>2 + 2</code>, and it does not <em>understand</em> two, or
+addition, or anything at all. It runs a fixed recipe — take this symbol,
+take that symbol, apply this stored step, then the next — and out comes
+<code>4</code>. The recipe is called an <strong>algorithm</strong>: a
+list of exact instructions that could be followed by something with no
+understanding whatsoever, just the ability to shuffle symbols by the
+rules. That is what a computer <em>is.</em> A machine for following
+algorithms, blindingly fast, and blind.</p>
+<p>Now here is the assumption almost all of modern science makes about
+<em>you.</em> It says: your brain is also a machine following rules —
+vastly more complicated ones, but rules all the same. Neurons firing,
+signals passing, all of it a kind of computation. On this view, your
+mind is just what a very large, very fast algorithm feels like from the
+inside. Thought is computation. There is nothing else going on.</p>
+<p>Penrose says: that cannot be the whole story. And to show why, he
+reaches for one of the strangest discoveries ever made about rules
+themselves.</p>
+<h2 id="a-truth-you-can-see-but-cannot-prove">A truth you can see but
+cannot prove</h2>
+<p>Picture a box.</p>
+<p>Inside the box is a <strong>system of rules</strong> — a complete,
+exact method for proving mathematical statements true. Feed it a claim
+about numbers; if the claim is provable, the box will grind through its
+rules and stamp it PROVED. This is what mathematicians dreamed of
+building: one trustworthy machine that could, in principle, prove every
+mathematical truth. A perfect rule-follower.</p>
+<p>In 1931 a young logician named <strong>Kurt Gödel</strong> proved
+that no such box can exist — and the way he proved it is the hinge of
+this whole page, so hold on and take it slowly.</p>
+<p>Gödel showed how to build, for <em>any</em> such box of rules, one
+special sentence. Call it G. The sentence G is carefully rigged to say,
+about itself:</p>
+<blockquote>
+<p><em>“This sentence cannot be proved by the rules in the
+box.”</em></p>
+</blockquote>
+<p>Now think about what the box can do with G. Suppose the box
+<em>proves</em> G. Then G would be provable — but G <em>says</em> it is
+not provable, so the box would have proved something false. A box that
+proves falsehoods is broken; we assumed ours was sound. So a sound box
+<em>cannot</em> prove G. But wait — that is <em>exactly what G
+says!</em> G says “I cannot be proved,” and we have just worked out
+that, indeed, the box cannot prove it. So <strong>G is
+true.</strong></p>
+<p>Sit with the shape of that. The box cannot prove G. Yet <em>you</em>
+— standing outside the box, looking at what it says and what it can do —
+can <em>see</em> that G is true. Not by following the box’s rules; the
+rules are precisely what cannot reach G. You saw it by <em>understanding
+what G meant</em> and reasoning about the box from the outside.</p>
+<p>That is the crack Penrose drives his whole argument into.</p>
+<h2 id="so-understanding-is-not-rule-following">So understanding is not
+rule-following</h2>
+<p>Here is the move. Whatever method you just used to see that G is
+true, it was <strong>not</strong> the box’s set of rules — because those
+rules provably cannot get to G. You reached a truth that no algorithm
+inside that system could reach.</p>
+<p>Now, someone will object: “Fine, but maybe your mind is just a
+<em>bigger</em> box, with more rules.” Penrose’s reply is the heart of
+it. Whatever box you claim the mind is, Gödel’s trick builds a
+<em>new</em> G for that bigger box too — and again the human
+mathematician, understanding what it means, can step outside and see it
+is true. You can always climb out. No fixed box of rules ever contains
+your ability to understand. That is not true of any computer, which is
+forever trapped inside whatever rules it was given.</p>
+<p>Penrose states the conclusion plainly, and it is worth reading in his
+exact words:</p>
+<blockquote>
+<p><em>“Human mathematicians are not using a knowably sound algorithm in
+order to ascertain mathematical truth.”</em> — Roger Penrose,
+<em>Shadows of the Mind</em> (1994), p. 76 [verbatim]</p>
+</blockquote>
+<p>Unpack that one careful sentence. He is not saying humans never make
+mistakes, or that we don’t often think in rule-like ways. He is saying
+that the specific act of <em>understanding a truth</em> — really
+grasping why G must be true — is doing something no rule-following
+machine can do. <strong>Understanding is non-computable.</strong> There
+is a step in genuine human thought that is not, and cannot be, the
+running of an algorithm.</p>
+<p>If that is right, it is enormous. It means the mind is not a computer
+— not a faster one, not a bigger one, not any one at all. Something else
+is happening. And a physicist who believes that is now obliged to ask a
+very hard question: <em>where, in the physical world, is there anything
+that isn’t a computation?</em> Because if the brain is made of ordinary
+physics, and ordinary physics is computable, then Penrose has painted
+himself into a corner. His escape is the boldest part of the story.</p>
+<h2 id="where-in-all-of-nature-could-a-non-computer-hide">Where in all
+of nature could a non-computer hide?</h2>
+<p>Penrose went looking through physics for a place where nature does
+something <em>not</em> reducible to following a rule. He found one
+candidate — and it lives in the strangest room in all of science:
+quantum mechanics.</p>
+<p>Go gently. In the everyday world, a thing is in one definite state —
+a coin is heads <em>or</em> tails. But the tiniest things, like a single
+particle, are described before you look at them as being in a <em>blur
+of possibilities at once</em> — a bit like a coin still spinning in the
+air, not yet landed, genuinely both. Physicists call this blur a
+<strong>superposition.</strong> Then you measure it — you “look” — and
+the blur suddenly snaps to one definite answer. Heads. The spinning
+stops. This snapping-to-one-answer is called <strong>collapse</strong>,
+and here is the scandal at the center of physics: <em>nobody agrees on
+what causes it, or what “looking” even means.</em> The equations
+describe the smooth spinning beautifully. They say almost nothing about
+why, or when, it lands.</p>
+<p>Penrose has his own proposal for what does it, and it is
+characteristically bold: <strong>gravity.</strong> Every mass bends
+space around it, ever so slightly. When a tiny object is smeared across
+two places at once, its <em>gravity</em> is smeared across two places
+too — and Penrose argues nature will not tolerate that blur of space
+itself for long. The heavier the object, the more unbearable the blur,
+the faster it must resolve. A single electron could hang spun-up for
+millions of years; a speck you could see under a microscope would
+collapse almost instantly. He calls this gravity-driven collapse
+<strong>objective reduction</strong> — <em>objective</em> because it
+happens on its own, out in the world, with no observer needed to “look.”
+(This is the same instinct that made him say the real puzzle isn’t
+quantizing gravity but “gravitizing” the quantum — letting gravity be
+what decides.)</p>
+<p>And crucially — this is why he went hunting here in the first place —
+Penrose argues that <em>how</em> the blur resolves into one specific
+answer is <strong>not a computation.</strong> It is not the running of
+any algorithm hidden in the particle. It is a genuine, one-off,
+non-computable event in the fabric of reality. He believes he has found,
+in objective reduction, the one place in known physics where nature does
+something a computer cannot: it <em>chooses,</em> without following a
+rule.</p>
+<p>So now he has both halves. A mind that does something non-computable.
+And a physics with exactly one non-computable event in it. The
+temptation to join them is obvious. But there is a gap a mile wide:
+quantum blurs are famously delicate, snuffed out the instant they touch
+anything warm and wet — and a brain is nothing if not warm and wet. Who
+could possibly connect a fragile quantum event to a living neuron? That
+is where the second author walks in.</p>
+<h2 id="the-turn-down-inside-the-neuron">The turn: down inside the
+neuron</h2>
+<p>Stuart Hameroff spent his career as an anesthesiologist. His whole
+job is to switch consciousness off and on with gases — and to wonder,
+every day, <em>what exactly am I switching?</em> He had long suspected
+the answer was not in the big obvious wiring of the brain, the neurons
+passing signals like a telephone network, but somewhere smaller and
+stranger.</p>
+<p>Inside every neuron, holding it in shape like tent-poles, are tiny
+hollow tubes called <strong>microtubules</strong> — lattices built of a
+protein, far smaller than the cell itself. Hameroff proposed that these
+tubes are not just scaffolding. They are, he suggested, the actual
+machinery of consciousness: small enough, structured enough, and (he
+argues) shielded enough that a quantum blur could briefly survive inside
+them — protected from the warm chaos long enough to matter.</p>
+<p>Put Hameroff’s tubes together with Penrose’s gravity-collapse and you
+get the theory this page is named for: <strong>Orch OR</strong> —
+<em>orchestrated objective reduction.</em> The idea, in plain words:
+inside the microtubules, quantum blurs build up, “orchestrated” (tuned,
+arranged, made meaningful) by the living activity of the neuron around
+them. Each blur grows until it hits Penrose’s gravity threshold — and
+<em>collapses.</em> That collapse, the non-computable event, is proposed
+to <em>be</em> a flicker of consciousness. Not consciousness caused by
+the brain afterward, like heat off an engine — the collapse
+<em>itself,</em> they claim, is a moment of raw experience. String
+millions of these flickers together, orchestrated across the brain, and
+you have the ongoing stream of a conscious mind.</p>
+<p>Notice what a strange and daring bridge this is. It ties the most
+intimate thing you have — the felt fact of being aware right now — to
+the deepest and coldest layer of physics, the structure of space and
+time. That is not an accident of the theory; it is the <em>whole
+point.</em> If consciousness rides on gravity-driven collapse, then the
+thing that makes you <em>you</em> is woven into the basic fabric of the
+universe. Mind is not a late accident of biology. It is stitched into
+the floor of reality.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>A computer only ever follows rules — yet a human mind can
+look at a rule-bound system, step outside it, and simply <em>see</em> a
+truth the rules can never prove. So understanding is not computation;
+something in thought reaches past every algorithm. Penrose finds the
+only non-computable event in known physics — the gravity-driven collapse
+of a quantum blur — and Hameroff hides it inside tiny tubes in your
+neurons. On their telling, each collapse is a spark of experience, and
+your mind is the universe’s deepest physics, orchestrated into
+feeling.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If — and here, more than anywhere, the honest work is to
+cut one claim cleanly into two, because the two halves are on
+<em>completely</em> different footing, and it is a mistake (a common
+one) to accept or reject them together.</p>
+<p><strong>The first half — the Gödel argument — is real philosophy, and
+genuinely unsettled.</strong> It is not a crank’s trick; it has been
+argued over by serious logicians for decades. But it is
+<em>contested,</em> and you should know the strongest objection. Critics
+answer: yes, you can step outside the box and see G is true — but in
+doing so you have simply moved to a <em>larger</em> box of rules (one
+that includes “the original box is sound”). You haven’t escaped
+computation; you’ve just switched to a bigger algorithm. Penrose has
+replies to this, and the critics have replies to the replies — the
+logician Solomon Feferman and others pressed exactly this point, and it
+has never been cleanly settled either way. The honest status:
+<strong>the Gödel argument is a live, respectable, unproven
+philosophical case that understanding is non-computable — not a theorem
+that settles it.</strong> It shifts where the burden lies; it does not
+win the match.</p>
+<p><strong>The second half — the microtubule biology — is on much weaker
+ground, and here most experts say plainly that it is wrong.</strong> The
+killer objection is called <strong>decoherence.</strong> Quantum blurs
+are exquisitely fragile; the warmer and busier the surroundings, the
+faster they collapse into ordinary randomness — and the inside of a
+living brain, at body temperature, drenched in jostling molecules, is
+about the most hostile place imaginable for a delicate quantum state.
+The physicist Max Tegmark ran the numbers and argued the blurs in a
+microtubule would die in a fraction of a fraction of the time Orch OR
+needs — far too fast to do any orchestrating. Hameroff and Penrose
+dispute this and point to newer findings of “quantum vibrations” in
+microtubules as encouragement. But it is fair and important to say:
+<strong>the great majority of neuroscientists and physicists do not
+accept the microtubule theory,</strong> and regard the quantum-brain
+claim as unproven at best. The two authors are honest that the whole
+thing lives or dies as testable science — which is a virtue — but as of
+now, it has not passed.</p>
+<p>So cut them apart. You can find the Gödel argument genuinely
+provocative — a real reason to doubt that mind is <em>only</em>
+computation — while treating the specific microtubule machinery as a
+fragile bet that the evidence does not currently support. Taking the
+philosophy seriously does not oblige you to buy the biology.</p>
+<p>And now the fault line that sets up the next page. The thinker who
+follows, <strong>Karl Friston</strong>, comes at the mind from the exact
+opposite direction — and the collision is head-on. Penrose’s entire case
+is that the mind does something <em>no computation can do.</em>
+Friston’s entire case is that the brain, the self, the whole feeling of
+being someone, <em>is</em> a computation — a specific one: a process of
+<em>inference,</em> a machine forever guessing what is out there and
+correcting its guesses. Where Penrose says “step outside the algorithm,”
+Friston says “the self is nothing but the algorithm running.” One of
+them locates the essence of mind in the <em>non</em>-computable; the
+other builds mind out of computation and finds no remainder. That is not
+a small disagreement to be split down the middle. It is two of the
+sharpest living minds pointing at the same organ and saying opposite
+things about what it fundamentally <em>is.</em> Turn the page and meet
+the one who says: it’s inference, all the way down.</p>
+<blockquote>
+<p><em>“We proposed in the mid 1990’s that consciousness depends on
+biologically ‘orchestrated’ coherent quantum processes in collections of
+microtubules within brain neurons… This orchestrated OR activity (‘Orch
+OR’) is taken to result in moments of conscious awareness and/or choice…
+We conclude that consciousness plays an intrinsic role in the
+universe.”</em> — Stuart Hameroff &amp; Roger Penrose, “Consciousness in
+the universe: A review of the ‘Orch OR’ theory,” <em>Physics of Life
+Reviews</em> 11 (2014): 39–78, Abstract. [verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t14.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t16.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

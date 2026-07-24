@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>John Locke · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Scroll · Six
+</div>
+<h1 id="john-locke">John Locke</h1>
+<p class="kicker-sub">
+You reach only as far as your consciousness reaches back.
+</p>
+<p class="lead">
+John Locke was an English doctor and philosopher writing in the 1600s, a
+careful, practical man who trusted plain observation over grand systems.
+Where the last thinker, Descartes, went hunting for one thing he could
+not doubt, Locke asks a question you could put to a jury: what makes the
+person standing here today <em>the same person</em> who did something
+years ago? It sounds obvious until you push on it — and when you push,
+everything you’d reach for first falls away. This page walks his answer
+one slow step at a time. It is a quiet idea, but it changed how we think
+about who we are, and it still runs under our courtrooms and our
+arguments about blame. Take it gently.
+</p>
+<h2 id="start-with-a-question-you-already-answer-every-day">Start with a
+question you already answer every day</h2>
+<p>Someone asks: “Are you the same person who broke that window when you
+were seven?” You say yes without thinking. But <em>why</em> yes? What is
+it that stays the same across all those years, so that the child and the
+grown-up count as one person and not two?</p>
+<p>Try the obvious answers, and watch each one crumble.</p>
+<p>Is it the same <em>body</em>? It can’t be. Your body is not one fixed
+thing — it is a river. The cells swap out, the atoms you’re made of now
+were somewhere else a few years ago, the seven-year-old’s body is
+physically gone. If sameness of person meant sameness of stuff, you’d be
+a stranger to your own childhood.</p>
+<p>Is it the same <em>soul</em> — some hidden spiritual substance under
+it all? Locke’s move here is bold and honest: even if there <em>is</em>
+such a soul-stuff, it can’t be what makes you <em>you</em>. Suppose that
+same soul-substance had lived a whole earlier life you cannot remember a
+scrap of — some ancient person, gone from you completely. Would you be
+responsible for what <em>they</em> did? Of course not. You’d feel no
+more tied to them than to a stranger. So sameness of the underlying
+stuff, body or soul, is not what we actually mean when we say “the same
+person.” Something else is doing the work.</p>
+<h2 id="lockes-answer-the-thread-is-consciousness">Locke’s answer: the
+thread is consciousness</h2>
+<p>Here is his idea, and it is startlingly simple. What makes you the
+same person over time is <strong>consciousness</strong> — by which he
+means “the perception of what passes in a man’s own mind.” Your
+awareness of your own thoughts and deeds. The fact that you can <em>turn
+back</em> and find a past thought or action and know it as
+<em>yours</em>.</p>
+<p>You are the same person as far back as your consciousness can reach
+and take hold of a past moment — “and no further.” Those three words do
+enormous work. The self does not stretch as far as your body, or your
+soul, or the calendar. It stretches exactly as far as your consciousness
+can extend backward and lay claim to what it finds there.</p>
+<p>Notice what this makes the self. Not a lump of matter, not a spark of
+soul-stuff — but a <em>reach</em>. A living thread of awareness running
+back through time, gathering up the moments it can still own. You are
+the length of that thread.</p>
+<h2 id="the-prince-and-the-cobbler">The prince and the cobbler</h2>
+<p>Locke had a way of testing an idea by imagining something wild, to
+see which way our own judgment jumps. So picture this. One night the
+entire consciousness of a prince — all his memories, his sense of
+himself, everything he can look back on and call <em>mine</em> — leaves
+his body and wakes up inside the body of a cobbler, a poor shoemaker,
+while the cobbler’s own consciousness is gone. The prince’s body lies
+there, empty of that inner life.</p>
+<p>Now: who is the person walking around in the cobbler’s body?</p>
+<p>Everyone, Locke says, feels the answer at once. It is the
+<em>prince</em> — the same person, wearing the wrong body. He remembers
+the palace, owns the prince’s deeds, calls the prince’s life his own.
+The person went with the <em>consciousness</em>, not with the body. And
+here is the sharp edge: if the person goes with the consciousness, then
+the <em>body</em> is just clothing. The self is not the thing you’re
+made of. It’s the awareness that reaches back and says “that was
+me.”</p>
+<h2 id="the-self-is-not-a-thing-it-is-an-act">The self is not a thing —
+it is an act</h2>
+<p>This is the heart of it, so go slowly. We usually picture the self as
+a <em>thing you have</em> — a little core inside you, sitting there,
+being you. Locke quietly replaces that picture with a
+<em>doing</em>.</p>
+<p>The self, for him, is an <strong>act of appropriation</strong>.
+“Appropriation” just means claiming something as your own — the way
+you’d put your name on a bag. Consciousness reaches out across your
+past, touches a thought here, a deed there, and folds them in: <em>mine,
+mine, that too is mine.</em> That gathering-in, that binding of
+scattered moments into one owner, <em>is</em> the self. There is no
+owner sitting behind the act, waiting; the owning is the owner. You are
+not a thing that happens to remember. You are the remembering, doing its
+work of claiming.</p>
+<h2 id="where-all-of-it-comes-from-the-white-paper">Where all of it
+comes from: the white paper</h2>
+<p>Step back once more and ask where the mind gets <em>anything</em> to
+be conscious of. Locke’s famous answer sits under this whole picture.
+The mind, at the start, is like <strong>white paper</strong> — blank, no
+writing on it, no ideas stamped in before experience. (He wrote against
+people who thought we’re born already knowing certain truths; he saw no
+such thing in a newborn.)</p>
+<p>So how does the paper get written on? Through two channels, and only
+two.</p>
+<p>The first is <strong>sensation</strong> — your outer senses. Sight,
+sound, touch, taste, smell carry the world in and leave their marks.
+That’s the obvious one.</p>
+<p>The second is quieter and, for our story, the important one:
+<strong>reflection</strong>. This is an <em>inner</em> sense — the mind
+watching its own operations. Not seeing the world, but noticing itself
+<em>seeing</em>; catching itself thinking, doubting, wanting,
+remembering. Reflection is the mind turned back on its own activity. And
+that turning-back is exactly the material a self is made of, because the
+self <em>is</em> consciousness owning its own past acts. The inner sense
+that watches the mind is the same power by which the mind claims itself
+across time.</p>
+<h2 id="why-he-calls-person-a-courtroom-word">Why he calls “person” a
+courtroom word</h2>
+<p>One last piece, and it locks the whole thing together. Locke says
+flatly that “person” is a <strong>forensic term</strong> — a word built
+for the courtroom, for handing out praise and blame, reward and
+punishment.</p>
+<p>Sit with why that matters. If we only ever punish and reward
+<em>persons</em>, and a person is defined by what consciousness can
+reach and own, then it follows that we can only justly hold you to
+account for what you can actually own as yours. This is not a soft idea
+— it’s a hard, practical one. It ties the whole self to a real limit:
+the reach of your own consciousness. What you cannot reach back to and
+claim, you are not — and so, in the deepest sense, it is not yours to
+answer for. Locke built the self out of exactly the stuff that a fair
+judgment would need it to be built from.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>You are not the body you’re made of, or some hidden
+soul-stuff underneath. You are a reach of consciousness — a living
+thread of awareness that stretches back through time, gathering up the
+moments it can still own and binding them into one owner. You are as far
+back as you can reach and say “that was me,” and no
+further.</strong></p>
+</blockquote>
+<p>To know this is to see the self as something <em>done</em>, not
+something <em>had</em> — and to feel, gently, where its edges are.</p>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold it <strong>As-If</strong>, not As-Proven, and notice first where
+Locke and the man on the page before him part ways — because the
+disagreement is the whole lesson.</p>
+<p>Descartes made the self a <strong>substance</strong> — a thinking
+<em>thing</em> that simply exists, whole and continuous, whether or not
+it remembers a moment of its past. For Descartes, you are; the self is a
+solid fact, and it needed God to hold it steady across time. Locke
+pointedly refuses this. He lifts the self off any substance and sets it
+down on a <strong>relation</strong> — the reach of memory-consciousness.
+That is a genuine break. For Descartes the self is a thing that
+<em>has</em> thoughts; for Locke the self just <em>is</em> the thread of
+owned thoughts, and nothing more solid underneath. Where Descartes
+leaned on God to bind the self together, Locke lets it be bound — or
+broken — by consciousness alone.</p>
+<p>And here is the unsettling place that break leads, which you can test
+against your own sense of fairness. If the self reaches only as far as
+consciousness reaches, then <strong>cut the reach — forget completely —
+and the deed drops out of the self.</strong> The part of your life you
+can no longer reach back to and own is, for Locke, strictly not
+<em>you</em>. That is either a profound insight or a real problem, and
+philosophers have argued it ever since: it seems to say a man who has
+genuinely, totally forgotten a crime is not the same person who did it —
+which our courts do not accept. Locke saw the sting and half-embraced
+it; that’s the daring of the idea and its exposed nerve at once.</p>
+<p>What <em>is</em> solidly checkable: the plain observation Locke
+starts from — that your body and its matter change out entirely, so
+bodily stuff cannot be what your sameness rests on. Reflection, too, you
+can feel in a second: turn your attention onto your own thinking and
+catch the mind watching itself. That inner sense is real. What is the
+<strong>leap</strong> is the claim that consciousness is <em>all</em>
+there is to being the same person — that with the memory gone, the
+person is gone. That you cannot prove from the outside; you can only
+weigh it against how it feels to lose a memory, and against what justice
+seems to require. Two careful men stood at the same self and built it
+from opposite materials — one a substance, one a reach. That they
+disagree is not a flaw to iron out. It is the shape of how hard it is to
+say what you are.</p>
+<blockquote>
+<p><em>“…person… is a thinking intelligent being, that has reason and
+reflection, and can consider itself as itself, the same thinking thing,
+in different times and places; which it does only by that consciousness
+which is inseparable from thinking… As far as this consciousness can be
+extended backwards to any past action or thought, so far reaches the
+identity of that person.”</em> — John Locke, An Essay Concerning Human
+Understanding, II.xxvii.9</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t05.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t07.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

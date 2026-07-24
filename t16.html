@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Karl Friston · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Six
+</div>
+<h1 id="karl-friston">Karl Friston</h1>
+<p class="kicker-sub">
+The self is the story a body tells to keep itself alive.
+</p>
+<p class="lead">
+So far the living thinkers have come at the mystery from evolution, from
+physics, from the strange math of many minds. Karl Friston comes at it
+from the least likely place of all: the equations a brain scientist uses
+to describe how a body stays alive. He is one of the most cited
+neuroscientists alive, and he built a single idea so broad it tries to
+explain, in one stroke, why anything living holds together at all — and,
+along the way, what a “self” even is. The idea has hard-sounding names
+(free energy, Markov blankets) that scare people off. Don’t let them.
+Underneath, it is one simple, almost stubborn thought, and we are going
+to walk to it one small step at a time, starting from a cube of ice.
+</p>
+<h2 id="start-with-something-falling-apart">Start with something falling
+apart</h2>
+<p>Put an ice cube on a warm table and walk away. Come back in an hour:
+a puddle. Come back in a day: dry — the water has spread into the air,
+gone.</p>
+<p>This is the most ordinary thing in the world, and also the deepest
+law we know. Left alone, everything spreads out. The hot coffee goes
+cold. The sandcastle slumps back into flat sand. The drop of ink uncurls
+through the glass of water until it’s the palest, evenest grey. Nothing
+ever does the reverse on its own — you have never once seen a cold cup
+of coffee reheat itself, or grey water sort back into clear water and a
+tidy drop of ink. The universe has a direction, and the direction is
+<em>toward mush.</em> Toward mixed, spread-out, shapeless sameness.</p>
+<p>Scientists have a name for how spread-out and mixed something is:
+<strong>entropy.</strong> High entropy just means “well and truly mush.”
+And the law is simply this: entropy goes up. Things fall apart. Order
+leaks away into disorder, always, everywhere, given time.</p>
+<p>Now hold your own hand up and look at it.</p>
+<h2 id="the-strange-thing-that-refuses-to-spread">The strange thing that
+refuses to spread</h2>
+<p>Your hand is not spreading into the air. Neither are you. You have
+kept roughly the same shape, the same warmth, the same you-ness, for
+years — while the ink drop next to you wouldn’t last a minute. A living
+body is the one thing in the room that seems to be <em>breaking the
+rule,</em> holding its order together while everything around it slides
+toward mush.</p>
+<p>It isn’t really breaking the rule — it pays for its order by making a
+bigger mess outside (heat, waste, spent food). But the fact stays
+astonishing: <strong>a living thing is a pocket of order that keeps
+rebuilding itself faster than the world can wear it down.</strong> It
+is, you could say, a standing <em>bet against decay.</em> Every second
+it is quietly refusing to become a puddle.</p>
+<p>Friston’s whole theory begins by taking that refusal seriously and
+asking: <em>what must a thing do, mechanically, to keep pulling it
+off?</em> Not “why is life special” in a misty way — but what is the
+actual job description of staying alive? And his answer is the seed of
+everything: <strong>to keep existing, a thing has to keep itself in the
+small handful of states where it still works — and stay out of all the
+countless states where it comes apart.</strong></p>
+<p>A fish works in water and comes apart on dry land. Your body works at
+about 37 degrees and comes apart at 45. Out of the billion ways your
+insides could be arranged, only a narrow few are “alive.” To persist is
+to keep winning your way back to that narrow few, over and over, against
+a world forever trying to scatter you across all the rest.</p>
+<h2 id="surprise-the-one-word-the-whole-theory-turns-on">Surprise — the
+one word the whole theory turns on</h2>
+<p>Now Friston gives that narrow band of “working” states a name, and
+it’s a name worth slowing down for, because it sounds like it means one
+thing and actually means another.</p>
+<p>He calls the bad states — the ones where you’re coming apart —
+<strong>surprising.</strong></p>
+<p>Not surprising like a birthday party. Surprising in a precise sense:
+<em>a state you almost never find yourself in, if you’re the kind of
+thing you are.</em> A fish on a riverbank is in a hugely “surprising”
+state — fish are almost never there, because fish that end up there stop
+being fish. A body at 45 degrees is a “surprising” state for a body.
+Being intact, fed, and breathing is <em>unsurprising</em> — it’s exactly
+where a healthy creature spends nearly all its time. So flip it around
+and you get Friston’s core move:</p>
+<p><strong>To stay alive is to avoid surprising states. To persist is,
+quite literally, to keep your own surprise low.</strong></p>
+<p>That’s the whole engine. “Free energy,” the scary phrase in his
+title, is at bottom just a measurable stand-in for surprise — a quantity
+a system can actually compute and push down, because raw surprise itself
+is too slippery to measure directly. When you read “minimize free
+energy,” you can honestly hear “keep surprise low,” which means “stay in
+the states where you keep existing.” The math is hard; the meaning is
+not.</p>
+<h2 id="to-avoid-surprise-you-have-to-guess">To avoid surprise, you have
+to guess</h2>
+<p>Here is the step that turns a survival rule into a theory of
+<em>mind.</em> Go slowly.</p>
+<p>If your job is to avoid states that would break you, you can’t wait
+until you’re already in one — by then you’ve broken. You have to see it
+coming. You have to <strong>guess what’s about to happen</strong> and
+get out of the way <em>first.</em> The creature that can predict “the
+shadow overhead usually means a hawk” and duck stays unsurprising; the
+one that only reacts once the talons are in gets a very surprising
+afternoon.</p>
+<p>So anything that keeps itself alive has to carry, somewhere inside, a
+working <em>guess about its world</em> — a set of expectations for what
+its senses are about to report. Friston calls this a
+<strong>model.</strong> Not a conscious one, not words — just the
+built-in bet a system makes about what comes next. And staying alive
+turns into a loop with two ways to win:</p>
+<ul>
+<li><strong>Change the guess to fit the world.</strong> Your senses
+report something your model didn’t expect (a wet foot where you
+predicted dry). You update the guess. That updating — we usually call it
+<em>perceiving,</em> and <em>learning.</em></li>
+<li><strong>Change the world to fit the guess.</strong> Or you can
+<em>act</em> — move your body so the world lines up with what you
+predicted. You expected your foot to be dry, so you pull it out of the
+puddle and <em>make</em> it dry. Friston calls this <strong>active
+inference</strong>: you don’t just passively predict the world, you
+<em>nudge the world into matching your prediction.</em></li>
+</ul>
+<p>Sit with how strange and lovely that second one is. On this view, an
+action is not separate from a thought. Reaching for a cup is your body
+confirming a prediction — “there will be a cup in my hand” — by making
+it true. Perceiving and acting become the same one activity, run in two
+directions: bring the map to the world, or bring the world to the map,
+whichever keeps surprise low. That single loop, Friston argues, is what
+a nervous system <em>is for.</em></p>
+<h2 id="the-turn-the-boundary-and-the-story-it-tells">The turn — the
+boundary, and the story it tells</h2>
+<p>We have a thing that persists by guessing and acting. Two questions
+are left, and they are the ones that put Friston in a book about
+consciousness. <em>Where does the thing stop and the world begin? And
+who, in all this, is the “self” doing the guessing?</em></p>
+<p>Start with the edge. For any of this to work — for there to be an
+“inside” that models an “outside” — there has to be a boundary between
+them: a surface where the world touches the system and the system
+touches back. Everything the inside can ever know of the outside has to
+cross that surface; the inside never touches the world directly, only
+the reports arriving at its own border. Friston borrows a name for this
+boundary from mathematics: a <strong>Markov blanket.</strong> Picture a
+bubble around the living thing, made not of soap but of <em>sensing</em>
+(what comes in) and <em>acting</em> (what goes out). Inside the bubble:
+you. Outside: the world. And the only truth about the world you will
+ever have is what is written on the inside face of that bubble.
+<em>(Keep this bubble in mind — much later, in</em> The Glass, <em>this
+exact boundary turns out to be the thing several of our thinkers were
+circling from different sides.)</em></p>
+<p>Now the last and sharpest question. If the self is sealed inside a
+bubble, only ever reading its own inner surface, then <em>what is the
+self?</em> Friston’s answer is bracing, and it is the reason his page
+carries the epigram it does. The self, he says, is not a little extra
+thing living in the bubble — not a soul, not a driver, not a spark
+tucked behind the eyes. <strong>The self is simply the model the system
+keeps of itself</strong> in order to go on predicting well and staying
+alive. It is the body’s own best guess about <em>what it is,</em> held
+because a thing that guesses what it is can guess what it needs and
+where the danger lies. Friston has put it as bluntly as it can be put:
+the self is, in the end, <em>just a story</em> — a story the system
+tells, and keeps telling, because telling it is part of how the system
+stays in one piece.</p>
+<p>Not a story in the sense of “false.” A story in the sense of
+<em>authored, ongoing, and for a purpose.</em> You are the narrative
+your body maintains about itself so that it can keep being a body. Stop
+telling the story — stop modelling, stop predicting, stop pulling
+yourself back from the surprising states — and you don’t become a freed
+spirit. You become the puddle. The self, on this view, is not the
+passenger. It is the <em>act of holding together,</em> seen from the
+inside.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>A living thing is a bet against decay: to keep existing it
+must stay out of the states that would dissolve it, and to do that it
+must guess what is coming and act to make its guesses true. The boundary
+where its guessing meets the world is its edge; and the “self” is not a
+thing behind that edge but the story the system tells about itself in
+order to keep the bet alive. You are what it feels like from the inside
+to be a piece of the world refusing, moment by moment, to come
+apart.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If, not As-Proven — and here the honest work is to
+separate two things that Friston’s own framework tends to fuse: a
+genuine piece of testable science, and a large metaphysical reading laid
+on top of it.</p>
+<p><strong>What is real and checkable</strong> is the machinery. That
+brains work by prediction — that they carry expectations, register the
+gap when the world defies them, and both learn and act to close that gap
+— is not mysticism; it is a live, productive research program that has
+made specific, falsifiable predictions about how real neurons and real
+perception behave, and much of it has held up. As a working model of
+what a nervous system is <em>doing,</em> active inference earns its
+keep.</p>
+<p><strong>Where the ground gets soft</strong> is the size of the claim.
+The Free Energy Principle is stated so generally that it reaches to
+cover a cell, a brain, a forest, arguably a rock — anything that
+persists. That sweep is thrilling, and it is also the problem: a
+statement that fits <em>everything that stays in one piece</em> starts
+to look less like a discovery about the world and more like a
+re-description of what “staying in one piece” means — true almost by
+definition. Serious critics press exactly here: if no possible
+observation could count against it, is it a theory, or a very elegant
+tautology? The honest reader keeps the checkable neuroscience and treats
+the grand “principle of all persisting things” as a frame held As-If,
+not a proven law.</p>
+<p>And there is a quieter limit that matters most for <em>this</em>
+book. Even granting every word — that you are a self-modelling bubble
+minimizing surprise — the theory is <em>silent on why any of it is
+felt.</em> It can tell you, in beautiful detail, how a system tracks and
+corrects and predicts. It does not tell you why there is something it is
+<em>like</em> to be that system rather than nothing at all. Friston, to
+his credit, largely stays on the instrument’s side of that line: the
+self as <em>model,</em> the self as <em>story,</em> a description of
+function that need not commit to any inner glow.</p>
+<p>Which is precisely the fault line that earns the next page.
+<strong>Anil Seth</strong> takes Friston’s whole prediction machine and
+refuses to leave it cold. Building directly on this foundation, Seth
+argues the body’s predictions are not just bookkeeping — they are
+<em>genuinely felt,</em> that feeling itself is the brain’s controlled
+guess about the state of its own flesh, and that we are, in his phrase,
+“beast machines” for whom the predicting <em>is</em> the experiencing.
+Where Friston is content to call the self a useful story, Seth insists
+the story is <em>lived from the inside.</em> Same machine; one man reads
+it as instrument, the next as the very stuff of feeling. Turn the page
+and meet the one who says the prediction is felt.</p>
+<blockquote>
+<p><em>“The free-energy principle says that any self-organizing system
+that is at equilibrium with its environment must minimize its free
+energy. The principle is essentially a mathematical formulation of how
+adaptive systems (that is, biological agents, like animals or brains)
+resist a natural tendency to disorder.”</em> — Karl Friston, “The
+free-energy principle: a unified brain theory?”, <em>Nature Reviews
+Neuroscience</em> 11, 127–138 (2010). [verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t15.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t17.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

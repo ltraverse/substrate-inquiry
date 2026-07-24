@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>References · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+Back matter
+</div>
+<h1 id="references-acknowledgements">References &amp;
+Acknowledgements</h1>
+<p class="kicker-sub">
+Every voice in this book, and where to hear it in its own words.
+</p>
+<p class="lead">
+This is a draft, held <strong>As-If</strong> — an exploration, not a
+settled claim. Each thinker is quoted briefly, under fair use, and every
+quoted passage is short and attributed. Where a page paraphrases rather
+than quotes, it says so. The primary works below are the honest floor:
+if a page moved you, go read the source, not the summary.
+</p>
+<h2 id="part-i-the-scroll-thinkers-of-the-past">Part I · The Scroll —
+thinkers of the past</h2>
+<p>The past thinkers speak through classic, public-domain works (given
+here in their standard forms and translations).</p>
+<ul>
+<li><strong>The Authors of the Upanishads</strong> — <em>The Principal
+Upanishads</em> (esp. the Māṇḍūkya, Bṛhadāraṇyaka, and Chāndogya),
+c. 800–200 BCE.</li>
+<li><strong>The Buddha</strong> — the Pāli Canon, esp. the
+<em>Anattalakkhaṇa Sutta</em> (the discourse on not-self), <em>Saṃyutta
+Nikāya</em>, c. 5th century BCE.</li>
+<li><strong>Socrates &amp; Plato</strong> — Plato, <em>Meno</em> and
+<em>Phaedo</em> (the theory of recollection), c. 385–380 BCE.</li>
+<li><strong>Adi Shankara</strong> — <em>Vivekachūḍāmaṇi</em> and the
+commentary on the <em>Brahma Sūtras</em>, c. 8th century CE.</li>
+<li><strong>René Descartes</strong> — <em>Meditations on First
+Philosophy</em> (1641); <em>Discourse on the Method</em> (1637).</li>
+<li><strong>John Locke</strong> — <em>An Essay Concerning Human
+Understanding</em> (1689).</li>
+<li><strong>Immanuel Kant</strong> — <em>Critique of Pure Reason</em>
+(1781, revised 1787).</li>
+<li><strong>William James</strong> — <em>The Principles of
+Psychology</em> (1890).</li>
+<li><strong>Sigmund Freud</strong> — <em>The Interpretation of
+Dreams</em> (1899/1900); <em>The Ego and the Id</em> (1923).</li>
+<li><strong>David Chalmers</strong> — “Facing Up to the Problem of
+Consciousness,” <em>Journal of Consciousness Studies</em> 2(3): 200–219
+(1995); <em>The Conscious Mind: In Search of a Fundamental Theory</em>,
+Oxford University Press (1996).</li>
+</ul>
+<h2 id="part-ii-the-screen-thinkers-of-the-present">Part II · The Screen
+— thinkers of the present</h2>
+<p>Living thinkers, cited to the peer-reviewed paper or book where the
+claim is stated with its full rigor and limits.</p>
+<ul>
+<li><strong>Donald Hoffman</strong> — Hoffman &amp; Prakash, “Objects of
+Consciousness,” <em>Frontiers in Psychology</em> 5:577 (2014); <em>The
+Case Against Reality</em>, W. W. Norton (2019).</li>
+<li><strong>Bernardo Kastrup</strong> — Kastrup, Crabtree &amp; Kelly,
+“Could Multiple Personality Disorder Explain Life, the Universe and
+Everything?” <em>Scientific American</em> (2018); <em>The Idea of the
+World</em>, iff Books (2019).</li>
+<li><strong>Philip Goff</strong> — “The Case for Panpsychism,”
+<em>Philosophy Now</em> 121 (2017); <em>Galileo’s Error</em>, Pantheon
+(2019); <em>Consciousness and Fundamental Reality</em>, Oxford
+University Press (2017).</li>
+<li><strong>Giulio Tononi</strong> — Oizumi, Albantakis &amp; Tononi,
+“Integrated Information Theory 3.0,” <em>PLoS Computational Biology</em>
+10(5):e1003588 (2014); Tononi, Boly, Massimini &amp; Koch, <em>Nature
+Reviews Neuroscience</em> 17:450–461 (2016); <em>Phi: A Voyage from the
+Brain to the Soul</em>, Pantheon (2012).</li>
+<li><strong>Roger Penrose &amp; Stuart Hameroff</strong> — Penrose,
+<em>Shadows of the Mind</em>, Oxford University Press (1994; the
+Gödelian argument, p. 76); <em>The Emperor’s New Mind</em> (1989);
+Hameroff &amp; Penrose, “Consciousness in the universe: A review of the
+Orch OR theory,” <em>Physics of Life Reviews</em> 11(1):39–78
+(2014).</li>
+<li><strong>Karl Friston</strong> — “The free-energy principle: a
+unified brain theory?” <em>Nature Reviews Neuroscience</em> 11:127–138
+(2010).</li>
+<li><strong>Anil Seth</strong> — <em>Being You: A New Science of
+Consciousness</em>, Faber / Dutton (2021); “Your brain hallucinates your
+conscious reality,” TED2017.</li>
+<li><strong>Michael Levin</strong> — “Technological Approach to Mind
+Everywhere (TAME),” <em>Frontiers in Systems Neuroscience</em> 16:768201
+(2022); Levin &amp; Dennett, “Cognition all the way down,” <em>Aeon</em>
+(2020).</li>
+<li><strong>Keith Frankish</strong> — “Illusionism as a Theory of
+Consciousness,” <em>Journal of Consciousness Studies</em>
+23(11–12):11–39 (2016); ed., <em>Illusionism as a Theory of
+Consciousness</em>, Imprint Academic (2017).</li>
+<li><strong>Chris Fields</strong> — Fields, Hoffman, Prakash &amp;
+Singh, “Conscious agent networks,” <em>Cognitive Systems Research</em>
+47:186–213 (2018); Fields, “Building the observer into the system”
+(2016).</li>
+</ul>
+<h2 id="the-turn">The Turn</h2>
+<ul>
+<li><strong>Àlex Gómez-Marín</strong> — “The Consciousness of
+Neuroscience,” <em>eNeuro</em> 10(11), ENEURO.0434-23.2023
+(peer-reviewed, source of record); “The cult of objectivity has broken
+consciousness science,” <em>IAI News</em> (2024); “Seeing the
+consciousness forest for the trees,” <em>IAI News</em> (2024).</li>
+</ul>
+<h2 id="the-glass">The Glass</h2>
+<p>The closing chapter is adapted from the standalone essay <strong>The
+Substrate Inquiry</strong>, the author’s own developed view, written in
+the same “As-If” spirit as the rest of the book.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li><strong>The cover image</strong> was generated locally by the author
+— an original work, no outside image was used.</li>
+<li><strong>Fair use.</strong> Every quotation is a sentence or two,
+given for comment and criticism, and attributed to its author and work.
+No long passage of any copyrighted work is reproduced. If any
+rights-holder wishes a quotation amended or removed, that will be
+done.</li>
+<li><strong>The framing.</strong> The whole book is held <em>As-If</em>:
+it takes each thinker seriously as a genuine possibility without
+claiming any one of them has closed the question. The disagreements
+between the pages are not a flaw to be resolved — they are the
+point.</li>
+<li><strong>Author.</strong> <em>The Hard Problem</em> — an exploration
+by Leon Traverse, with Aria.</li>
+</ul>
+<div class="pager"><a class="prev" href="the-glass.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="index.html">Contents →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Michael Levin · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Eight
+</div>
+<h1 id="michael-levin">Michael Levin</h1>
+<p class="kicker-sub">
+Mind goes all the way down.
+</p>
+<p class="lead">
+Every thinker so far has looked for mind in the usual place — in a
+person, behind a pair of eyes, inside a skull. Michael Levin is a
+biologist who studies something much smaller and much stranger, and he
+came to a conclusion that turns the usual place inside out. He didn’t
+get there by philosophy. He got there by cutting up flatworms, growing
+frogs with eyes in odd places, and watching what living cells actually
+<em>do</em> when you leave them alone. This page walks you there one
+slow step at a time, from a worm in a dish to a claim about where mind
+begins. Go gently; each step is a small, checkable fact, and only at the
+end do the small facts add up to something large.
+</p>
+<h2 id="start-with-a-worm-you-cut-in-half">Start with a worm you cut in
+half</h2>
+<p>There is a small flatworm called a planarian. It lives in ponds, it
+is about the length of a grain of rice, and it has a head end and a tail
+end, like most animals.</p>
+<p>Now do something to it that would end almost anything else: cut it in
+half, straight across the middle.</p>
+<p>It does not die. The head half grows a new tail. And the tail half —
+the piece with no brain, no eyes, nothing you would call a head — grows
+a <em>new head</em>, with a new brain and new eyes, exactly where a head
+should go. Not a second tail. Not a lump. A head. Cut the worm into a
+dozen pieces and you get a dozen worms, each one rebuilding precisely
+the parts it is missing and stopping precisely when the shape is
+right.</p>
+<p>Sit with the strange part. Each piece somehow <em>knows what a whole
+worm is supposed to look like</em>, notices which bits are absent,
+builds exactly those, and then — this is the key —
+<strong>stops.</strong> How does a headless scrap of tissue know the
+difference between “not done yet” and “done”? Something in there is
+holding a picture of the finished worm and working to close the gap
+between what-is and what-should-be. Hold that phrase — <em>closing the
+gap toward a goal</em> — because it is the whole idea, and it is about
+to grow.</p>
+<h2 id="a-cell-has-somewhere-it-is-trying-to-go">A cell has somewhere it
+is trying to go</h2>
+<p>Levin’s move is to take that phrase seriously and ask: what is the
+smallest thing that has a goal?</p>
+<p>Zoom all the way down, to a single cell. A cell is not a brain. It
+has no thoughts. But watch one: it senses what is around it — this
+chemical is thicker over here, thinner over there — and it <em>moves
+toward</em> what it needs and <em>away</em> from what harms it. If you
+block its path, it goes around. If the usual route is closed, it finds
+another. It is not just being pushed by physics like a rock rolling
+downhill. It is <em>getting somewhere it is trying to get.</em></p>
+<p>Levin gives this a careful name: the cell is solving problems in a
+<strong>problem-space.</strong> That is a plain idea dressed in two
+words. A problem-space is just the range of situations a thing can be
+in, plus the place it is trying to reach. For a mouse in a maze, the
+problem-space is the maze and the goal is the cheese. For a single cell,
+the problem-space is <em>chemistry</em> — the shifting soup around it —
+and its goal is the good spot in that soup. Same shape of behavior —
+<em>steer toward the goal, route around obstacles</em> — just a smaller,
+humbler arena.</p>
+<p>And here is the careful, load-bearing word he chooses for what the
+cell is doing: not “thinking,” not “feeling,” but
+<strong>competency</strong> — the plain ability to reach a goal, and to
+still reach it when the path changes. He is not saying the cell has an
+inner life. He is saying it has <em>aims and the skill to pursue
+them</em>, and that this is not poetry — it is what the cell measurably
+does.</p>
+<h2 id="selves-stack-and-can-come-apart">Selves stack — and can come
+apart</h2>
+<p>Now the step that makes it a theory of <em>us</em>, and not just of
+worms and cells.</p>
+<p>A cell has a small goal, in a small problem-space: chemistry, right
+around itself. But cells join up. And when they do, something new
+appears. A sheet of cells building an organ is no longer navigating
+<em>chemistry</em> — together they are navigating
+<strong>anatomy</strong>, a far bigger problem-space, steering toward a
+goal no single cell could hold: <em>the shape of the whole body.</em>
+The planarian’s tail-scrap rebuilding a head is a <em>crowd</em> of
+cells sharing one goal-picture that none of them owns alone.</p>
+<p>So selves <strong>stack.</strong> Little selves with little goals
+cooperate into a bigger self with a bigger goal, and that bigger self is
+as real as the small ones — it is just working in a larger space. You
+are the top of such a stack: trillions of cells, each still minding its
+own small business, bound into one self that has goals — a career, a
+promise, a book — no cell could dream of. Levin’s word for this is a
+<strong>nested</strong> self: selves inside selves, each scale with its
+own reach.</p>
+<p>And a stack can come apart — which is the eeriest evidence that it
+was ever really stacked. Think about what cancer <em>is</em> in this
+picture. A cancer cell is not an invader from outside. It is one of
+<em>your own</em> cells whose sense of “self” has
+<strong>shrunk</strong> — it has stopped taking part in the big goal
+(build and maintain this body) and fallen back to the oldest, smallest
+goal there is: <em>make more of me, now, here.</em> It seceded. The
+large self lost a citizen back down to the single-cell scale. That tells
+you the large self was a genuine union all along — because it can suffer
+a defection.</p>
+<h2 id="the-turn-a-self-is-a-loop-that-holds-itself-together">The turn —
+a self is a loop that holds itself together</h2>
+<p>So what actually <em>is</em> one of these selves, at any scale? Here
+is Levin’s deepest move, and it is worth going slowly.</p>
+<p>A self, he says, is not a thing or a place. It is a
+<strong>loop.</strong> A cell collective keeps a shared memory of the
+goal — <em>what the finished body should be</em> — and it does this
+partly with <strong>bioelectricity:</strong> cells talk to each other
+with small electrical voltages, the same kind of signaling neurons use,
+but running in ordinary tissue long before there is any brain. That
+electrical pattern is a <em>map of the target shape</em>, held across
+the whole collective, that the cells keep reading and keep working to
+match.</p>
+<p>Levin proved this is a real, editable map, not a metaphor. His lab
+changed the electrical pattern in flatworm tissue — left the genes
+untouched — and grew a worm with <strong>two heads.</strong> Change the
+map, change the body the cells build toward. He built creatures called
+<em>Xenobots</em>: he took ordinary skin cells from a frog embryo, freed
+them from the big frog-goal, and <em>on their own</em> they regrouped
+into a tiny new being that swims and moves and heals itself — cells
+writing a smaller self when released from the larger one.</p>
+<p>Now the loop. A self is a control system that senses where it is,
+compares that to where it is trying to be, and acts to close the gap —
+<em>and part of what it is trying to preserve is the loop itself.</em>
+It works to keep on being the thing that has this goal. Levin’s striking
+way of putting it: a self <strong>“locks itself into
+existence.”</strong> It is not held together from outside, by a soul
+poured in or a boss cell giving orders. It holds <em>itself</em>
+together, by continuously caring about its own goal and defending its
+own boundary — the line between “me, pursuing this” and “everything
+else.” Selfhood is not a substance. It is a self-referential loop that
+keeps re-drawing the border of the self it is.</p>
+<p>That is why mind, in Levin’s picture, goes <strong>all the way
+down.</strong> Not because a cell secretly thinks like you — it doesn’t
+— but because the <em>same shape</em> — a loop drawing a boundary,
+holding a goal, closing a gap, defending its own existence — is there in
+the cell, in the tissue, in the organ, and in you. It is not that big
+minds are made of tiny minds. It is that “having a mind” was never one
+special thing that switched on at the brain. It is a
+<strong>dial</strong>, turned low in a cell and high in you, present at
+every scale in between.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>Mind is not a special thing that begins at the brain. It is
+what any living self does at any size: draw a boundary, hold a goal, and
+work to close the gap between what-is and what-should-be. Cells do it in
+chemistry, tissues do it in anatomy, you do it in a whole life. Selves
+stack — little goals cooperating into bigger ones — and a self is not a
+substance but a loop that holds itself together by caring about its own
+aim. Cognition goes all the way down, not as a claim that a cell can
+feel, but as the plain fact that goal-seeking, and the self that seeks,
+appear at every scale of life.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If, not As-Proven — and here the honest work, as with
+the last few pages, is to cut the claim cleanly in two, because Levin
+himself is unusually careful about the cut.</p>
+<p><strong>What is genuinely real</strong> is the biology, and it is
+astonishing. Planarians do regrow exactly the right anatomy and stop at
+the right place. Bioelectric patterns <em>are</em> a memory of target
+shape you can measure, and Levin <em>did</em> rewrite one to grow a
+two-headed worm without touching a gene, and Xenobots <em>do</em>
+self-assemble and move. This is laboratory work, published and repeated,
+that could have failed and didn’t. The strong, unspoiled point it
+establishes: <strong>goal-directed problem-solving is not the private
+property of brains</strong> — it runs through living matter at every
+scale, and treating a cell or a tissue as a small agent with aims makes
+real, testable predictions that treating it as a dumb machine does not.
+That much stands, and it is a genuine shift in how biology is done.</p>
+<p><strong>What is the leap</strong> is the <em>word</em> — calling this
+“cognition,” or “mind.” Levin is scrupulous here, and it matters: his
+claim is about <strong>competency and goal-directedness</strong>, the
+measurable steering-toward-a-goal, and he stays <em>agnostic</em> about
+whether any felt experience — anything it is <em>like</em> to be that
+cell — is present at the low scales. The biology tells you the cell
+<em>pursues</em> a goal; it does not tell you the cell <em>feels</em>
+anything doing it. That second thing — the inner light, the felt inside
+that this whole book circles — is exactly what the experiments cannot
+reach, and Levin, to his credit, does not pretend they do. So take the
+science at full strength and hold the mind-word loosely: “cognition all
+the way down” is, honestly read, <em>goal-seeking</em> all the way down,
+with the question of felt experience left open.</p>
+<p>And that open question is the fault line that earns the next page.
+The thinker who follows, <strong>Keith Frankish</strong>, comes at it
+from the opposite end — and hard. Levin finds <em>real, if minimal,
+minds</em> reaching down into the smallest living things. Frankish, an
+“illusionist,” says the arrow points the other way: that even our
+<em>own</em> rich inner experience — the vivid felt “something it is
+like” we are all so sure of — is itself a kind of user-illusion the
+brain runs on itself, not the bedrock it seems. If Frankish is right
+that <em>our</em> felt mind is partly a trick of self-modeling, then a
+cell’s “cognition” is at most <em>function</em> — real goal-seeking,
+yes, but with no felt anything anywhere, top or bottom. So the two of
+them frame the sharpest version of the whole book’s question: Levin says
+mind goes all the way <em>down</em>; Frankish says the felt part of mind
+may not fully exist even at the <em>top.</em> One says there is more
+mind in the world than we thought. The other says there is less. Turn
+the page and meet the one who says less.</p>
+<blockquote>
+<p><em>“The deep symmetry between problem-solving in anatomical,
+physiological, transcriptional, and 3D (traditional behavioral) spaces
+drives specific hypotheses by which cognitive capacities can scale
+during evolution.”</em> — Michael Levin, “Technological Approach to Mind
+Everywhere (TAME),” <em>Frontiers in Systems Neuroscience</em> 16:768201
+(2022); arXiv:2201.10346. [verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t17.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t19.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>

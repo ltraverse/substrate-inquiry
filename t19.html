@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Keith Frankish · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Nine
+</div>
+<h1 id="keith-frankish">Keith Frankish</h1>
+<p class="kicker-sub">
+Consciousness is a trick the brain plays on itself.
+</p>
+<p class="lead">
+Every page you have read so far treats one thing as solid ground: that
+your experience really does have a felt inner glow — a what-it-is-like —
+and the job is to explain where that glow comes from. This page belongs
+to a living philosopher who stops and says, gently but seriously:
+<em>wait. What if the glow isn’t there?</em> Keith Frankish defends a
+view called <strong>illusionism</strong>, and it is the one genuine
+dissenter in this whole book. It is easy to hear it as a joke or an
+insult — “you’re saying I don’t really feel anything?” — and easy to
+wave it away. Don’t. It is a careful, honest position held by careful,
+honest people, and the only way to see why is to walk it slowly, from
+something you can check with your own eyes right now. Take it step by
+step; the sting is in the tail.
+</p>
+<h2 id="start-with-a-line-you-cant-stop-seeing-wrong">Start with a line
+you can’t stop seeing wrong</h2>
+<p>Look at two lines. One has little arrowheads at each end pointing
+<em>out</em>, like this: &gt;—&lt;. The other has arrowheads pointing
+<em>in</em>, like this: &lt;—&gt;. The second line looks longer. Clearly
+longer.</p>
+<p>Now take a ruler and measure them. They are exactly the same
+length.</p>
+<p>Here is the strange part, and the part that matters. Measure them,
+prove it to yourself, <em>know</em> with total certainty that they are
+equal — and then look again. The one still looks longer. Knowing the
+truth does not fix your seeing. Your eyes go on reporting something you
+have proven false. You cannot switch it off.</p>
+<p>This is a famous trick called an <em>optical illusion</em>, and
+everyone has felt one. But notice exactly what it shows: your own inner
+report about your own experience can be <strong>flatly wrong, and stay
+wrong even after you catch it.</strong> The thing seeming a certain way
+is not the same as the thing being that way. Hold onto that, because
+Frankish is going to aim it somewhere you have never aimed it
+before.</p>
+<h2 id="your-brain-lies-to-you-about-how-much-youre-seeing">Your brain
+lies to you about how much you’re seeing</h2>
+<p>Try one more thing, right where you sit.</p>
+<p>Look straight at one word on this page and hold your eyes still. Now,
+without moving them, try to read the words three lines down. You can’t.
+Away from the exact center, your vision is a smeary mess — poor detail,
+washed-out color. Almost the entire visual world you feel you are
+having, right now, is actually a blur. Only a tiny dot in the middle is
+sharp.</p>
+<p>So why does it <em>feel</em> like you are bathed in a wide, rich,
+crystal-clear picture of the room? Because your brain tells you it is
+so. It doesn’t fill in the missing detail — it does something sneakier:
+it <strong>doesn’t flag that anything is missing.</strong> It hands you
+a confident report of “rich, complete, detailed scene” when what it
+actually has is a sharp dot and a lot of guessing. And you believe the
+report, because the report is all you ever get to check against.</p>
+<p>There’s a cousin of this that scientists have tested carefully,
+called <em>change blindness:</em> people stare right at a scene while
+something big changes — a wall shifts color, a person is swapped for
+someone else — and they simply don’t notice, even while feeling sure
+they’re seeing everything. Again and again, the felt fullness of
+experience turns out to be <strong>more than is really there.</strong>
+The inner report oversells.</p>
+<p>Now we have two facts, both checkable, both a little humbling: your
+inner sense of your own experience <em>can</em> be wrong, and it
+routinely <em>is</em> wrong — it paints a richer, cleaner, fuller
+picture than the machinery actually supports. Frankish’s whole move is
+to ask one more question with these facts in hand.</p>
+<h2 id="the-turn-what-if-the-felt-glow-is-the-biggest-oversell-of-all">The
+turn — what if the “felt glow” is the biggest oversell of all?</h2>
+<p>First, the thing everyone in this book has been trying to explain.
+Philosophers have a word for the felt inner quality of experience:
+<strong>qualia</strong> (KWAH-lee-uh). The pure redness of red. The stab
+of a pain, over and above the flinch and the “ow.” The taste of coffee
+as it is <em>for you,</em> on the inside. Not what your eyes do, not
+what your mouth reports — the <em>felt</em> extra, the what-it-is-like.
+Almost every thinker here treats that felt extra as the one rock-solid
+fact, the thing that couldn’t possibly be an illusion. Descartes’
+descendants all agree on this much: you might be wrong about the whole
+outside world, but you can’t be wrong that <em>it feels like
+something</em> to be you.</p>
+<p>Frankish points at that rock and says: that is exactly where the
+illusion lives.</p>
+<p>Here is his claim, laid out plainly. Your brain does a great deal of
+information processing — sorting light into “red,” steering your hand
+off a hot stove, running the machinery of sight and taste and pain. And
+your brain also builds a <strong>simplified inner picture of that very
+processing</strong> — a quick cartoon of what it’s doing, so
+<em>you</em> (the whole animal) can use it, report it, act on it. That
+inner cartoon is crude and distorted, the way the rich-visual-field
+feeling was crude and distorted. And the specific distortion it
+introduces is this: it represents plain physical processing <strong>as
+if it had these special, glowing, ineffable felt qualities</strong> — as
+if there were a mysterious extra, the qualia. There isn’t. There is just
+the processing, and a built-in report that dresses it up as something
+more. The “felt glow” is the brain’s oversell of its own workings, the
+same trick as the too-rich visual field, turned all the way up.</p>
+<p>So — and this is the sentence that makes illusionism
+<em>illusionism</em> — <strong>it is not that you have no
+experiences.</strong> You see, you hurt, you taste; those states are
+perfectly real and they matter. What Frankish denies is that they carry
+the special phenomenal properties philosophers say they do. You are not
+wrong that you’re in pain. You are wrong about <em>what pain is
+like</em> — you think it has a raw felt essence over and above its
+workings, and that “over and above” is the illusion.</p>
+<p>Feel how this flips the whole board. For everyone else, the great
+mystery — the <strong>hard problem</strong> — is: <em>why does all this
+processing feel like anything at all?</em> Frankish says that question
+has a false word buried in it. It assumes there’s a real felt glow to be
+explained. Take the glow to be an illusion, and the hard problem doesn’t
+get <em>solved</em> — it <strong>dissolves.</strong> There was never an
+extra thing there to explain.</p>
+<p>But a new problem takes its place, and Frankish takes it dead
+seriously. If there’s no glow, then we have to explain <strong>why it
+seems so utterly, unshakably like there is one.</strong> Why is this
+particular illusion the most powerful, most convincing illusion a mind
+can have — so convincing that the smartest people alive stake everything
+on it being real? He calls this the <strong>illusion problem,</strong>
+and he says <em>this,</em> not the hard problem, is the real work of a
+science of consciousness: not explain the felt magic, but explain the
+trick — how the brain generates so overwhelming a sense of a magic that
+isn’t there.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>You cannot be wrong that you’re having an experience — but
+you can be wrong about what the experience is like. Illusionism says the
+“felt inner glow,” the special what-it-is-like that every other view
+treats as bedrock, is the brain’s cartoon of its own plain workings,
+oversold the way your eyes oversell the rich detail that isn’t really in
+the room. So the hard problem — why does processing feel like something?
+— isn’t answered; it’s un-asked, because it smuggled in a glow that was
+never there. The real puzzle is why the trick is so good.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this As-If, like every page — but this one needs a different
+kind of honesty, because this is the view the rest of the book is
+arguing <em>against,</em> and the fair thing is to give it real weight
+before you say where it hurts.</p>
+<p><strong>What is genuinely strong about it.</strong> Illusionism is
+the most <em>deflationary</em> view here — it asks for the least. Every
+other page pays for the felt glow with something expensive: new physics,
+or consciousness as the fundamental stuff of reality, or a special extra
+ingredient the universe has to supply. Illusionism pays nothing extra.
+It says the physical brain, doing ordinary physical work, is the
+<em>whole</em> story, and the only thing left to explain is a very good
+trick — which is the kind of thing brains are already known to do (the
+arrowed lines; the too-rich visual field; change blindness are all
+receipts). It takes the science exactly as it is and adds no mystery.
+That is not a cheap position; it is arguably the <em>most</em>
+scientifically modest one on offer, and it is held by serious
+philosophers, not cranks. It is a live, respectable answer — <strong>not
+a dodge, and not a denial that your inner life is real.</strong> Read
+carelessly it sounds like “you’re a robot who feels nothing.” Read
+carefully it says: you feel everything you think you feel; you’re just
+wrong about the metaphysical price tag on it.</p>
+<p><strong>What it pays for that modesty.</strong> A steep, strange
+intuitive cost — maybe the steepest bill in the book. There is one thing
+that has always felt like the single fact you <em>cannot</em> be wrong
+about: that right now, it feels like <em>something</em> to be you. Doubt
+the outside world, doubt your memories, doubt your own body — fine — but
+the sheer <em>thereness</em> of present experience seems to be the one
+place where seeming and being can’t come apart, because here the seeming
+<em>is</em> the being. Illusionism has to say: even there, you can be
+fooled. And many thinkers find that not just hard to believe but almost
+incoherent — an illusion, they point out, is <em>itself</em> an
+experience; to have the illusion of a glow already <em>is</em> to have
+some glow. Whether Frankish can wriggle out of that is exactly where the
+fight is. So the honest cut is this: illusionism is the strongest,
+cleanest deflation anyone has managed — and it asks you to disbelieve
+the one thing that feels least deniable. Take both halves seriously; the
+price is real and so is the position.</p>
+<p><strong>Now the disagreement — and it is the hinge of the whole
+book.</strong> Remember <strong>David Chalmers,</strong> back in the
+Ten, the one who <em>named</em> the hard problem and made it the floor
+beneath this entire field — the fixed point everyone since has had to
+build on. Frankish’s claim is aimed straight at that floor. He says the
+floor itself is the illusion. There is no polite middle here: either the
+felt glow is real and the hard problem is the deepest question there is,
+or the glow is a trick and the hard problem is a category mistake
+dressed as a mystery. Chalmers built the room; Frankish says the
+foundation is painted on.</p>
+<p>And it isn’t only Chalmers. Look back across the Living pages and see
+how alone Frankish stands: <strong>Hoffman</strong> takes consciousness
+as the fundamental fabric behind the physical world;
+<strong>Kastrup</strong> makes it the one universal mind;
+<strong>Goff</strong> finds a spark of it in every particle;
+<strong>Tononi</strong> builds a whole science to <em>measure</em> how
+much of it a system has. Every one of them treats the felt inner reality
+as the bedrock fact to be honored and explained. Frankish treats that
+same bedrock as the very thing to be explained <em>away.</em> He is the
+one voice in the choir singing the opposite note — and a book that only
+sang the felt-experience-is-real note would be lying to you about how
+open this question really is. That is why he is here, at full
+strength.</p>
+<p>Which leaves us needing something rare: not another grand claim, in
+either direction, but a genuinely <em>honest floor</em> — someone who
+will lay out, without flinching, exactly how little any of us are
+actually entitled to say. Turn the page to <strong>Chris
+Fields.</strong></p>
+<blockquote>
+<p>“Illusionism is the view that phenomenal consciousness (in the
+philosophers’ sense) is an illusion.” [verbatim — opening line of the
+abstract; widely reproduced across secondary sources, primary paywalled
+at the time of writing] The illusionist’s move is to replace the
+<em>hard problem</em> — why physical processing feels like anything —
+with what Frankish calls the <em>illusion problem:</em> the task of
+explaining why we are so powerfully and systematically disposed to
+<em>judge</em> that our experiences have felt phenomenal qualities, when
+they do not. [paraphrase, confirmed across multiple sources] — Keith
+Frankish, “Illusionism as a Theory of Consciousness,” <em>Journal of
+Consciousness Studies</em> 23(11–12), 2016.</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t18.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="t20.html">Next →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>
