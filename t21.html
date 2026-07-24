@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Jonathan Schooler · The Hard Problem</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">
+
+:root{
+--ink:#20242a; --soft:#565b62; --faint:#8a8f96; --line:#e7e3da; --line2:#efece4;
+--paper:#fbfaf7; --panel:#f5f2ea; --panel2:#efeadf;
+--accent:#0e7c94; --accent2:#12a0bd; --glow:rgba(18,160,189,.16);
+--serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+--sans:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.62}
+
+.kb-nav{position:sticky;top:0;z-index:10;background:rgba(251,250,247,.9);backdrop-filter:saturate(1.2) blur(8px);
+border-bottom:1px solid var(--line);font-family:var(--sans);font-size:.86rem}
+.kb-nav .in{max-width:760px;margin:0 auto;padding:.7rem 1.4rem;display:flex;align-items:baseline;gap:.2rem;flex-wrap:wrap}
+.kb-nav a.brand{font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:.02em;margin-right:.7rem}
+.kb-nav a{color:var(--soft);text-decoration:none;padding:.15rem .5rem;border-radius:6px}
+.kb-nav a:hover{color:var(--accent);background:var(--glow)}
+.kb-nav .sp{flex:1}
+
+.wrap{max-width:760px;margin:0 auto;padding:2.4rem 1.4rem 4rem}
+h1,h2,h3,h4{font-family:var(--sans);color:#14181d;line-height:1.22}
+h1{font-size:2.15rem;letter-spacing:-.015em;margin:.2rem 0 .6rem}
+h2{font-size:1.42rem;margin:2.6rem 0 .7rem;padding-top:1.3rem;border-top:1px solid var(--line2)}
+h3{font-size:1.12rem;margin:1.6rem 0 .4rem;color:#2b3138}
+p{margin:0 0 1.05rem}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(14,124,148,.35)}
+a:hover{border-bottom-color:var(--accent)}
+strong{color:#14181d}
+em{color:#3d434a}
+ul,ol{margin:0 0 1.1rem 1.15rem}li{margin:.35rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--panel);color:#0b5566;padding:.12em .4em;border-radius:4px}
+hr{border:0;height:1px;background:var(--line);margin:2.2rem 0}
+blockquote{margin:1.3rem 0;padding:.5rem 0 .5rem 1.2rem;border-left:3px solid var(--accent2);color:#3d434a;font-style:italic}
+
+.lead{font-size:1.2rem;line-height:1.55;color:#31373e}
+
+.hero{position:relative;margin:.4rem 0 1.6rem;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(10,30,50,.28)}
+.hero img{display:block;width:100%;height:auto;margin:0}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 1.5rem 1.2rem;
+background:linear-gradient(to top,rgba(4,8,12,.82),rgba(4,8,12,.15) 70%,transparent);color:#eafcff}
+.hero .cap .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#8fdce9}
+.hero .cap h1{color:#fff;margin:0 0 .35rem;font-size:2.7rem;font-weight:800;letter-spacing:.06em}
+.hero .cap p{margin:0;color:#dff6fb;font-size:1.12rem;max-width:36rem;font-family:var(--sans);font-weight:400}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0 1rem}
+.card{display:block;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;background:#fff;
+text-decoration:none;border-bottom:1px solid var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,30,50,.09);border-color:var(--accent2)}
+.card .n{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:.2rem 0 .3rem;color:#14181d}
+.card p{margin:0;font-size:.94rem;color:var(--soft);line-height:1.5}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.hero .cap h1{font-size:1.7rem}}
+
+.stack{margin:1.4rem 0}
+.layer{display:grid;grid-template-columns:9.5rem 1fr;gap:.2rem 1.1rem;padding:.85rem 0;border-top:1px solid var(--line2);align-items:start}
+.layer:first-child{border-top:0}
+.layer .name{font-family:var(--sans);font-weight:700;color:#14181d;font-size:1.02rem}
+.layer .name small{display:block;font-weight:500;color:var(--accent);font-size:.76rem;letter-spacing:.04em;margin-top:.15rem}
+.layer .body{color:#3d434a;font-size:1rem}
+@media(max-width:620px){.layer{grid-template-columns:1fr}}
+
+table{border-collapse:collapse;width:100%;margin:1.4rem 0;font-size:.96rem}
+th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line2);vertical-align:top}
+thead th{font-family:var(--sans);font-size:.82rem;letter-spacing:.03em;color:#fff;background:var(--accent);border-bottom:0}
+thead th:first-child{border-top-left-radius:8px}thead th:last-child{border-top-right-radius:8px}
+tbody tr:hover{background:var(--panel)}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);
+border-radius:10px;padding:.9rem 1.1rem;margin:1.4rem 0;font-size:.98rem}
+.note strong{color:var(--accent)}
+
+.foot{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans);font-size:.82rem;color:var(--faint)}
+.foot a{color:var(--soft);border:0}
+</style>
+  <style type="text/css">
+
+.book-eyebrow{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:.4rem 0 .25rem}
+.book-title{font-size:3rem;letter-spacing:-.015em;margin:.05rem 0 1rem;border:0;padding:0}
+@media(max-width:620px){.book-title{font-size:2.1rem}}
+
+.book-hero{margin:1.2rem 0 1.8rem;padding:2.6rem 1.6rem;border-radius:16px;
+background:linear-gradient(135deg,#12181f,#1d2b33 60%,#0e5768);color:#eafcff;
+box-shadow:0 12px 44px rgba(10,30,50,.30)}
+.book-hero .kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:#8fdce9;margin-bottom:.5rem}
+.book-hero h1{color:#fff;font-size:2.9rem;font-weight:800;letter-spacing:.02em;margin:0 0 .5rem;border:0;padding:0}
+.book-hero p{color:#dff6fb;font-size:1.15rem;max-width:40rem;margin:0;font-family:var(--sans);font-weight:400}
+
+.part{font-family:var(--sans);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+margin:2.2rem 0 .2rem;padding-top:1.4rem;border-top:1px solid var(--line2)}
+
+.part-label{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.2rem}
+.kicker-sub{font-family:var(--sans);color:var(--accent);font-size:1.12rem;font-weight:600;margin:-.15rem 0 1.6rem}
+
+.wrap img{max-width:100%;height:auto;display:block;margin:1.8rem 0;border-radius:12px;box-shadow:0 6px 30px rgba(40,20,80,.22)}
+
+.hero img{margin:0;border-radius:0;box-shadow:none}
+
+blockquote{background:var(--panel);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;padding:.9rem 1.2rem}
+
+.pager{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+margin:3.2rem 0 0;padding-top:1.3rem;border-top:1px solid var(--line);
+font-family:var(--sans);font-size:.92rem}
+.pager a{color:var(--accent);border:0}
+.pager a:hover{color:var(--accent2)}
+.pager .mid{color:var(--faint)}
+.pager .none{color:var(--line);pointer-events:none}
+
+.stub{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--faint);
+border-radius:10px;padding:1.3rem 1.4rem;color:var(--soft);font-size:1rem}
+.stub strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="kb-nav"><div class="in"><a class="brand" href="index.html">The Hard Problem</a><a href="index.html">Contents</a><a href="index.html#the-scroll">The Scroll</a><a href="index.html#the-screen">The Screen</a><a href="the-turn.html">The Turn</a><a href="the-glass.html">The Glass</a><a href="references.html">References</a></div></nav>
+<main class="wrap">
+<div class="part-label">
+The Screen · Eleven
+</div>
+<h1 id="jonathan-schooler">Jonathan Schooler</h1>
+<p class="kicker-sub">
+Minds nest inside minds — and resonance makes them one.
+</p>
+<p class="lead">
+Most of the living thinkers you’ve met came at consciousness from
+philosophy, or physics, or the study of matter. Jonathan Schooler came
+at it from inside the ordinary mind. He is a working experimental
+psychologist, one of the most-cited alive, and he made his name studying
+the least mystical thing imaginable: how your attention wanders off, and
+the small jolt when you <em>notice</em> that it has. From that plain,
+checkable starting point he and his colleagues built a picture of
+consciousness as strange and large as anything in this book — but built
+brick by brick, out of laboratory findings rather than grand claims.
+This page walks it one slow step at a time. Start with something that
+happens to you a hundred times a day.
+</p>
+<h2 id="start-with-the-moment-you-catch-yourself-drifting">Start with
+the moment you catch yourself drifting</h2>
+<p>You’re reading, your eyes keep crossing the words — but somewhere
+back there your mind has slipped its leash. You’re planning dinner, or
+replaying an argument, and the page has been sliding past unread. Then a
+little click: <em>wait, I wasn’t paying attention.</em> And you reel
+yourself back in.</p>
+<p>Sit with how odd that click is. For a while, <em>someone</em> was
+reading — the eyes moved, the lines were tracked — and at the same time
+<em>someone</em> was off planning dinner. Then a third thing happened: a
+part of you noticed the split and reported it. Schooler spent years
+studying exactly this — mind-wandering, and the catching-yourself he
+named <strong>meta-awareness</strong> — and it handed him a clue most
+people walk straight past. Your mind is not one single spotlight. While
+the “top” of you was elsewhere, a <em>lower</em> part was still
+competently doing a job, with its own small stream running, unwatched.
+For those moments you were, quietly, <strong>more than one at
+once.</strong></p>
+<p>Hold onto that homely fact. He is about to follow it all the way
+down, and all the way up.</p>
+<h2 id="windows-inside-windows">Windows inside windows</h2>
+<p>Here is the picture he and his colleagues drew, and it is worth
+building slowly.</p>
+<p>Think of your whole conscious experience right now as a
+<strong>window</strong> — a frame with a view in it, everything you are
+aware of this instant. Schooler’s claim is that this window is not made
+of dead pixels. <strong>Every pixel is itself a smaller window</strong>
+— a little frame with its own dim view, its own faint stream of
+experience. And each of <em>those</em> is made of smaller windows again,
+down and down. He calls the whole thing a <strong>nest of observer
+windows</strong>: consciousness as a <em>fractal</em>, windows within
+windows within windows, like a mosaic where every tile, looked at
+closely, turns out to be another mosaic.</p>
+<p>The mind-wandering clue is what lifts this above a pretty image. Each
+window has real <strong>autonomy</strong> — it can run its own stream,
+do its own job, even while the windows above it are busy elsewhere. That
+is what “reading on autopilot while you plan dinner” actually
+<em>is</em>: a lower window handling the page while a higher one drifts.
+The levels are genuinely semi-independent, little minds within the
+mind.</p>
+<p>At the very top sits one slow, wide window that gathers all the rest
+— the <strong>apex</strong>, the unified “you” that feels like a single
+point of view. In the model the levels are marked by <em>rhythm</em>:
+the small windows below run fast, and as you climb toward the apex the
+rhythms slow, until the top is astonishingly slow — a claim (roughly one
+cycle every fifty seconds) that the authors freely admit no prior
+science had ever proposed. The nest runs <strong>bottom-up</strong>:
+many fast small minds, gathered upward into one slow large one.</p>
+<h2 id="the-problem-this-was-built-to-solve-and-william-james-at-the-door">The
+problem this was built to solve — and William James at the door</h2>
+<p>Now the hard question, the one this whole construction exists to
+answer. If you are made of many little windows, each with its own scrap
+of experience — <em>how do they ever become one?</em> Why isn’t your
+mind just a crowd of tiny separate feelings, a stadium of strangers,
+with no single <em>you</em> to have them all together?</p>
+<p>You met this exact problem a few pages back. <strong>William
+James</strong> stared at it and stopped: a feeling, he said, is “shut in
+its own skin, windowless” — pack a hundred of them side by side and you
+still have a hundred sealed feelings and <em>nobody home</em> to feel
+them as one. For a unified mind to exist, he concluded, it would have to
+be “a totally new fact,” something extra, not the sum of its parts.
+James named the wall and left it standing. It is the same wall Chalmers
+would later call the <em>combination problem</em>, and it is one of the
+deepest reasons the hard problem is hard.</p>
+<p>Schooler’s boldest move is to walk straight up to James’s windowless
+feeling and offer a mechanism to open it. His word for it is
+<strong>resonance.</strong></p>
+<h2 id="how-resonance-opens-the-windows">How resonance opens the
+windows</h2>
+<p>Picture two guitars in a room. Pluck a string on one, and across the
+room the matching string on the other begins to hum on its own —
+untouched. They share a frequency, so a vibration in one
+<em>becomes</em> a vibration in the other. The energy crosses the gap
+because the two are tuned alike.</p>
+<p>Schooler and his colleague Tam Hunt propose that consciousness binds
+the same way. When separate parts of a system — separate little windows
+— fall into the <strong>same rhythm</strong>, into shared resonance,
+they stop being sealed neighbors and start trading information at a new
+speed. Their waves add together, lock into step, and something tips
+over: a <strong>phase transition</strong>, the way loose water molecules
+suddenly become one sheet of ice. At that tipping point the many begin
+to behave as one. The windowless windows find a window after all — a
+<em>shared frequency</em> is the opening James couldn’t see.</p>
+<p>They gave this idea a title that tells you exactly how honest they
+are being about it: <strong>“The Easy Part of the Hard
+Problem.”</strong> Resonance, they are saying, may explain how the parts
+<em>combine</em> — how scattered information binds into a single
+integrated flow. That is the easy part. It leaves the hard part
+precisely where it was. Hold that; we come back to it.</p>
+<h2 id="the-nugget">The nugget</h2>
+<blockquote>
+<p><strong>You are not a single indivisible spark of awareness. You are
+a nest of smaller awarenesses — windows inside windows, each with its
+own small view — gathered upward into the one slow, wide window you call
+“I.” What turns the many into one is not a soul laid on top, but
+resonance: parts that fall into the same rhythm begin to share a single
+stream, the way two tuned strings hum as one.</strong></p>
+</blockquote>
+<h2 id="hold-it-honestly">Hold it honestly</h2>
+<p>Hold this <strong>As-If</strong>, and be exact about which parts are
+which — Schooler is unusually honest about his own seams, which is part
+of why he earns a place near the honest floor of this book.</p>
+<p>What is <strong>real and testable</strong> is the machinery: the
+nesting, the rhythms that couple up and down the levels, the idea that
+binding shows up as parts falling into shared resonance. These make
+predictions a laboratory can check, and waving them off because a
+version of the story was told on a consciousness-friendly podcast would
+be prejudice, not science.</p>
+<p>What the mechanism <strong>does not deliver</strong> is the thing
+that matters most — and the model says so out loud, in a boxed caveat
+you have to admire. The signals it describes “may be necessary but not
+sufficient to generate consciousness.” Resonance can explain how
+information <em>integrates</em>; that the integrated whole is <em>felt
+from the inside</em> rides on a separate assumption — that a spark of
+experience goes all the way down into the smallest windows to begin
+with. The mechanism opens James’s window; it does not explain why there
+was ever anyone inside to look out of it. That is the <em>“easy
+part”</em> confession, and it points straight at the wall <strong>Chris
+Fields</strong> refuses to pretend away — the honest floor of this book,
+where the whole nest can be mapped and it still won’t tell you whether
+anyone is home.</p>
+<p>Two more honest edges. Schooler’s picture runs
+<strong>bottom-up</strong> — many small minds building upward into one —
+which is the exact <em>reverse</em> of <strong>Bernardo
+Kastrup</strong>, for whom there is one great mind splitting
+<em>downward</em> into many. Same fractal, opposite arrow: two serious
+thinkers reading the one nested shape in contrary directions, which
+should make you wary of taking the shared image for agreement. And when
+Schooler reaches past the mechanism — into extra <em>dimensions of
+time</em>, meant to rescue free will and the felt flow of “now” — he is
+the first to raise the caution flag himself, calling it a “roughhewn”
+pointer with no test behind it and retreating, when physics won’t have
+it, to “meaningful dimensions of <em>psychological</em> reality.” Take
+that part as a sketch of where he hopes to go, not a place the evidence
+has reached.</p>
+<blockquote>
+<p><em>“The signals discussed here may be necessary but not sufficient
+to generate consciousness.”</em> — Riddle &amp; Schooler,
+<em>Neuroscience of Consciousness</em> (2024), Box 1. [verbatim]</p>
+</blockquote>
+<div class="pager"><a class="prev" href="t20.html">← Previous</a><a class="mid" href="index.html">Contents</a><a class="next" href="the-turn.html">The Turn →</a></div>
+<div class="foot">The Hard Problem · a draft, held <strong>As-If</strong> · an exploration by Leon Traverse, with Aria.</div>
+</main>
+</body>
+</html>
